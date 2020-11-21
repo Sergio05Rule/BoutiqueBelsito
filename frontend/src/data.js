@@ -2,8 +2,8 @@ const data = {
     products:[
         {
             _id: '1',
-            name: 'Top DonnaDEV',
-            image: '../images/capo1.jpeg',
+            name: 'Top Donna',
+            image: './images/capo1.jpeg',
             price: 120,
             brand: 'Nike',
             rating: 4.5,
@@ -12,7 +12,7 @@ const data = {
         },
         {
             _id: '2',
-            name: 'Top DonnaDEV',
+            name: 'Top Donna 2',
             image: './images/capo2.jpeg',
             price: 22,
             brand: 'Nike',
