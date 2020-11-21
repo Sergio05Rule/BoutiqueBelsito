@@ -2,8 +2,8 @@ const data = {
     products:[
         {
             _id: '1',
-            name: 'Top Donna',
-            image: './images/capo1.jpeg',
+            name: 'Top Donnaa',
+            image: '../images/capo1.jpeg',
             price: 120,
             brand: 'Nike',
             rating: 4.5,
