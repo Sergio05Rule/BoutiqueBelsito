@@ -12,7 +12,7 @@ const data = {
         },
         {
             _id: '2',
-            name: 'Top Donna2',
+            name: 'Top Donna 2',
             image: './images/capo2.jpeg',
             price: 22,
             brand: 'Nike',
