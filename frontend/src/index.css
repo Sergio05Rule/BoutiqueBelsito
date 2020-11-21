@@ -1,0 +1,113 @@
+html{
+  font-size: 62.5%; /* 16px default browser x 62.5 = 10px = 1rem */
+  box-sizing: border-box;
+}
+body{
+  margin:0;
+  height:100vh; /* full height*/
+  font-size: 1.6rem; /* 16px */
+  font-family: Helvetica, Arial, sans-serif; /* in avaialbility order 1 ifnot2...*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root{
+  height: 100%;
+}
+
+/* Layout */
+.grid-container{
+  display: grid; /* grid: new layout system for css*/
+  grid-template-areas:
+      'header'
+      'main'
+      'footer';
+      grid-template-columns: 1fr; /* 1 column only */
+      grid-template-rows: 5rem 1fr 5rem; /* 3 row: header 5rem main 1 fr footer 5rem */
+      height:100%;
+
+}
+header{
+  grid-area:header; /* link to template */
+  background-color: #64A1FF;
+}
+main{
+  grid-area: main;
+  padding: 1rem;
+}
+footer{
+  grid-area: footer;
+  background-color: #64A1FF;
+  color: white;
+}
+
+/* Common Classes */
+h1{
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+h2{
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}
+
+a{
+  text-decoration: none;
+}
+a:hover{
+  color: orange;
+}
+
+/* All Link inside of Header */
+header a{
+  color: white;
+  padding: 1rem;
+}
+
+/* link of "brand" class */
+a.brand{
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap; /* row responsive: if not enough space then split in line*/
+  justify-content: space-between; /* max dist between items in a row */
+  align-items: center;
+}
+.row.center{
+  justify-content: center;
+}
+
+/* Images */
+img{
+  border-radius: 0.5rem;
+}
+img.medium{
+  max-width: 29rem;
+  width: 100%;
+}
+
+/* Card */
+.card{
+  border: 0.1rem gray;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+.card.body{
+  padding: 1rem;
+}
+/* for all direct child of card-body */
+.card-body > *{
+  margin-bottom: 0.5; /* space btw items */
+}
+.price{
+  font-size: 2rem;
+}
+
+/* Raiting (all span inside rating */
+.rating{
+  color:lightblue;
+  margin: 01.rem;
+}
