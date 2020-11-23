@@ -2,7 +2,7 @@ const data = {
     products:[
         {
             _id: '1',
-            name: 'Top Donna',
+            name: 'Top Donna Backend',
             category: 'Shirts',
             image: '/images/capo1.jpeg',
             price: 120,
