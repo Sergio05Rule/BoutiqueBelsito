@@ -3,9 +3,14 @@ import mongoose from 'mongoose'
 //import data from './data.js'; // Important in backend append extension
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 // Create app express()
-const app = express()
+const app = express();
+app.use(express.json()); // parsing json data
+app.use(express.urlencoded({ extended: true}));
 
 //connect to moognose, input: mongoDB_url,option
 mongoose.connect( process.env.MONGODB_URL ||  'mongodb://localhost/BoutiqueBelsito',{
