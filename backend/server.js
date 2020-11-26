@@ -1,12 +1,16 @@
 import express from 'express';
+import mongoose from 'mongoose'
 import data from './data.js'; // Important in backend append extension
+import userRouter from './routers/userRouter.js';
 
 // Create app express()
 const app = express()
 
-// Define first route '/' , request & response (handler of the path)
-app.get('/', (req,res) => {
-    res.send('Server is ready'); // response
+//connect to moognose, input: mongoDB_url,option
+mongoose.connect( process.env.MONGODB_URL ||  'mongodb://localhost/BoutiqueBelsito',{
+    useNewUrlParser: true, // remove deprected warning
+    useUnifiedTopology: true,
+    useCreateIndex: true,
 });
 
 // API to get details of product
@@ -22,6 +26,19 @@ app.get('/api/products/:id', (req, res) => {
 // Define another route for data.js
 app.get('/api/products',(req,res)=>{
     res.send(data.products)
+});
+
+// let's use userRouter
+app.use('/api/users',userRouter);
+
+// Define first route '/' , request & response (handler of the path)
+app.get('/', (req,res) => {
+    res.send('Server is ready'); // response
+});
+
+// middleware: error chatcher in router (expressAsyncHandler)
+app.use((err, req, res, next)=>{
+    res.status(500).send({ message: err.message });
 });
 
 const port = process.env.PORT || 5000;
