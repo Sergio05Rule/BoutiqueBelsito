@@ -17,6 +17,9 @@ const initialState = {
         cartItems: localStorage.getItem('cartItems') // if exist
         ? JSON.parse(localStorage.getItem('cartItems')) //then
         : [], //else
+    shippingAddress: localStorage.getItem('shippingAddress')
+        ? JSON.parse(localStorage.getItem('shippingAddress'))
+        : {},
     }
 }; //Initial State of the Store
 
