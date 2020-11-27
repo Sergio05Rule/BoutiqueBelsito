@@ -17,7 +17,6 @@ const data = {
       ],
     products:[
         {
-            _id: '1',
             name: 'Top Donna Backend',
             category: 'Shirts',
             image: '/images/capo1.jpeg',
@@ -29,7 +28,6 @@ const data = {
             countInStock: 100,
         },
         {
-            _id: '2',
             name: 'Top Donna 2',
             category: 'Shirts',
             image: '/images/capo2.jpeg',
@@ -41,7 +39,6 @@ const data = {
             countInStock: 0,
         },
         {
-            _id: '3',
             name: 'Red Dress',
             category: 'Dress',
             image: '/images/capo3.jpeg',
@@ -53,7 +50,6 @@ const data = {
             countInStock: 3,
         },
         {
-            _id: '4',
             name: 'PS5',
             category: 'console',
             image: '/images/ps5.jpeg',

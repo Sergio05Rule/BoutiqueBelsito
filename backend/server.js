@@ -1,10 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose'
-import data from './data.js'; // Important in backend append extension
+//import data from './data.js'; // Important in backend append extension
+import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 // Create app express()
-const app = express()
+const app = express();
+app.use(express.json()); // parsing json data
+app.use(express.urlencoded({ extended: true}));
 
 //connect to moognose, input: mongoDB_url,option
 mongoose.connect( process.env.MONGODB_URL ||  'mongodb://localhost/BoutiqueBelsito',{
@@ -13,7 +19,9 @@ mongoose.connect( process.env.MONGODB_URL ||  'mongodb://localhost/BoutiqueBelsi
     useCreateIndex: true,
 });
 
-// API to get details of product
+// API to get details of product, now in productRouter
+/*
+    before backend
 app.get('/api/products/:id', (req, res) => {
     const product = data.products.find((x) => x._id === req.params.id);
     if (product) {
@@ -22,14 +30,12 @@ app.get('/api/products/:id', (req, res) => {
       res.status(404).send({ message: 'Product Not Found' });
     }
   });
+*/
 
-// Define another route for data.js
-app.get('/api/products',(req,res)=>{
-    res.send(data.products)
-});
-
-// let's use userRouter
+// let's use API userRouter
 app.use('/api/users',userRouter);
+
+app.use('/api/products', productRouter)
 
 // Define first route '/' , request & response (handler of the path)
 app.get('/', (req,res) => {
