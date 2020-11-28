@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 import dotenv from 'dotenv'
+import orderRouter from './routers/orderRouter.js';
 
 dotenv.config();
 
@@ -35,7 +36,9 @@ app.get('/api/products/:id', (req, res) => {
 // let's use API userRouter
 app.use('/api/users',userRouter);
 
-app.use('/api/products', productRouter)
+app.use('/api/products', productRouter);
+
+app.use('/api/orders', orderRouter);
 
 // Define first route '/' , request & response (handler of the path)
 app.get('/', (req,res) => {
