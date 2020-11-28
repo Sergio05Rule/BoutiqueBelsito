@@ -48,13 +48,13 @@ export default function OrderScreen(props) {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
-      <h1>Order {order._id}</h1>
+      <h1>Order number: {order._id}</h1>
       <div className="row top">
         <div className="col-2">
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Shipping</h2>
+                <h2>Shipping information</h2>
                 <p>
                   <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                   <strong>Address: </strong> {order.shippingAddress.address},
@@ -73,7 +73,7 @@ export default function OrderScreen(props) {
             </li>
             <li>
               <div className="card card-body">
-                <h2>Payment</h2>
+                <h2>Payment information</h2>
                 <p>
                   <strong>Method:</strong> {order.paymentMethod}
                 </p>
@@ -107,7 +107,7 @@ export default function OrderScreen(props) {
                         </div>
 
                         <div>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x {item.price}€ = {item.qty * item.price}€
                         </div>
                       </div>
                     </li>
@@ -126,19 +126,19 @@ export default function OrderScreen(props) {
               <li>
                 <div className="row">
                   <div>Items</div>
-                  <div>${order.itemsPrice.toFixed(2)}</div>
+                  <div>{order.itemsPrice.toFixed(2)}€</div>
                 </div>
               </li>
               <li>
                 <div className="row">
                   <div>Shipping</div>
-                  <div>${order.shippingPrice.toFixed(2)}</div>
+                  <div>{order.shippingPrice.toFixed(2)}€</div>
                 </div>
               </li>
               <li>
                 <div className="row">
                   <div>Tax</div>
-                  <div>${order.taxPrice.toFixed(2)}</div>
+                  <div>{order.taxPrice.toFixed(2)}€</div>
                 </div>
               </li>
               <li>
@@ -147,7 +147,7 @@ export default function OrderScreen(props) {
                     <strong> Order Total</strong>
                   </div>
                   <div>
-                    <strong>${order.totalPrice.toFixed(2)}</strong>
+                    <strong>{order.totalPrice.toFixed(2)}€</strong>
                   </div>
                 </div>
               </li>
@@ -159,6 +159,7 @@ export default function OrderScreen(props) {
                     <PayPalButton
                       amount={order.totalPrice}
                       onSuccess={successPaymentHnadler}
+                      currency="EUR"
                     ></PayPalButton>
                   )}
                 </li>
