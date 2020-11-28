@@ -4,11 +4,7 @@ import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
-<<<<<<< HEAD
 import OrderScreen from './screens/OrderScreen';
-=======
-import OrderScreen from './screens/orderScreen';
->>>>>>> master
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProductScreen from './screens/ProductScreen';

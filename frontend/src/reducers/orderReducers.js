@@ -1,13 +1,4 @@
 import {
-<<<<<<< HEAD
-        ORDER_CREATE_FAIL,
-        ORDER_CREATE_REQUEST,
-        ORDER_CREATE_RESET,
-        ORDER_CREATE_SUCCESS,
-        ORDER_DETAILS_FAIL,
-        ORDER_DETAILS_REQUEST,
-        ORDER_DETAILS_SUCCESS,
-=======
     ORDER_CREATE_FAIL,
     ORDER_CREATE_REQUEST,
     ORDER_CREATE_RESET,
@@ -15,7 +6,6 @@ import {
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_FAIL
->>>>>>> master
   } from '../constants/orderConstants';
   
   export const orderCreateReducer = (state = {}, action) => {
@@ -32,37 +22,21 @@ import {
         return state;
     }
   };
-<<<<<<< HEAD
-  
-  export const orderDetailsReducer = (state = { loading: true }, action) => {
+
+export const orderDetailsReducer = (
+    state = { loading: true },
+    action
+    ) => {
     switch (action.type) {
-      case ORDER_DETAILS_REQUEST:
+        case ORDER_DETAILS_REQUEST:
         return { loading: true };
-      case ORDER_DETAILS_SUCCESS:
+        case ORDER_DETAILS_SUCCESS:
         return { loading: false, order: action.payload };
-      case ORDER_DETAILS_FAIL:
+        case ORDER_DETAILS_FAIL:
         return { loading: false, error: action.payload };
-      default:
+        default:
         return state;
     }
-  };
-=======
+};
 
-    export const orderDetailsReducer = (
-        state = { loading: true },
-        action
-      ) => {
-        switch (action.type) {
-          case ORDER_DETAILS_REQUEST:
-            return { loading: true };
-          case ORDER_DETAILS_SUCCESS:
-            return { loading: false, order: action.payload };
-          case ORDER_DETAILS_FAIL:
-            return { loading: false, error: action.payload };
-          default:
-            return state;
-        }
-  };
-
->>>>>>> master
   
