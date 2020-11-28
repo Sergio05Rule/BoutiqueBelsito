@@ -29,29 +29,30 @@ function App() {
         <BrowserRouter>
         <div className="grid-container">
                 <header className="row">
+                    
                     <div>
                         <Link className="brand" to="/">Boutique Belsito</Link>
                     </div>
                     <div>
-                        <Link to="/cart" className="brand-son">
-                            Cart
+                        <Link to="/cart" >
+                            <i class="fa fa-shopping-cart" style={{'font-size' : '3rem'}}></i>
                             {cartItems.length > 0 && (
                                 <span className="badge">{cartItems.length}</span>
                         )}
                         </Link>
                         {userInfo ? (
                                 <div className="dropdown">
-                                    <Link to="#" className="brand-son">
+                                    <Link to="#" >
                                         {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                                      </Link>
                                      <ul className="dropdown-content">
-                                         <Link to="#signout" onClick={signoutHandler} className="brand-son-son">
+                                         <Link to="#signout" onClick={signoutHandler} >
                                              SignOut
                                          </Link>
                                      </ul>
                                 </div>
                             ) : (
-                                <Link to="/signin" className="brand-son">Sign In</Link>
+                                <Link to="/signin">Sign In</Link>
                             )}
                     </div>
                 </header>

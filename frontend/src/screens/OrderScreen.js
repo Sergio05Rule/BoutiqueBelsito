@@ -47,11 +47,7 @@ const successPaymentHandler = () => {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
-<<<<<<< HEAD:frontend/src/screens/OrderScreen.js
       <h1>Order Number: {order._id}</h1>
-=======
-      <h1>Order number: {order._id}</h1>
->>>>>>> master:frontend/src/screens/orderScreen.js
       <div className="row top">
         <div className="col-2">
           <ul>
@@ -161,12 +157,7 @@ const successPaymentHandler = () => {
                   ) : (
                     <PayPalButton
                       amount={order.totalPrice}
-<<<<<<< HEAD:frontend/src/screens/OrderScreen.js
                       onSuccess={successPaymentHandler}
-=======
-                      onSuccess={successPaymentHnadler}
-                      currency="EUR"
->>>>>>> master:frontend/src/screens/orderScreen.js
                     ></PayPalButton>
                   )}
                 </li>
