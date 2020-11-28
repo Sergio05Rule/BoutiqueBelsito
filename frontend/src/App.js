@@ -29,7 +29,7 @@ function App() {
         <BrowserRouter>
         <div className="grid-container">
                 <header className="row">
-                    
+
                     <div>
                         <Link className="brand" to="/">Boutique Belsito</Link>
                     </div>
@@ -68,7 +68,7 @@ function App() {
                     <Route path="/" component={HomeScreen} exact></Route>
                 </main>
                 <footer className="contacts">
-                    © 2020 Boutique Belsito Tutti i diritti riservati 
+                    © 2021 Boutique Belsito Tutti i diritti riservati 
                     <br></br>
                     Via Dell'urbanistica 6, 76011 Bisceglie (BAT), Puglia  P.IVA XXXXXXX
                     <br></br>
