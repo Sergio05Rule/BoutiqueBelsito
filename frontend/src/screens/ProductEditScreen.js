@@ -67,7 +67,7 @@ const submitHandler = (e) => {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-  
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0]; //upload only the first selected file
     const bodyFormData = new FormData();
@@ -92,7 +92,7 @@ const submitHandler = (e) => {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Edit Product {productId}</h1>
+          <h1>Edit Product Number : {productId}</h1>
         </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
