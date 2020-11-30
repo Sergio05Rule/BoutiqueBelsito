@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
+import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import OrderScreen from './screens/OrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
@@ -46,9 +47,14 @@ function App() {
                                         {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                                      </Link>
                                      <ul className="dropdown-content">
+                                        <li>
+                                            <Link to="/orderhistory">Order History</Link>
+                                        </li>
+                                        <li>
                                          <Link to="#signout" onClick={signoutHandler} >
                                              SignOut
                                          </Link>
+                                        </li>
                                      </ul>
                                 </div>
                             ) : (
@@ -65,12 +71,13 @@ function App() {
                     <Route path="/payment" component={PaymentMethodScreen}></Route>
                     <Route path="/placeorder" component={PlaceOrderScreen}></Route>
                     <Route path="/order/:id" component={OrderScreen}></Route>
+                    <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
                     <Route path="/" component={HomeScreen} exact></Route>
                 </main>
                 <footer className="contacts">
                     © 2021 Boutique Belsito Tutti i diritti riservati 
                     <br></br>
-                    Via Dell'urbanistica 6, 76011 Bisceglie (BAT), Puglia  P.IVA XXXXXXX
+                    Via Dell'urbanistica 6, 76011 Bisceglie (BAT), Puglia  P.IVA 07492280727
                     <br></br>
                     <a className="personalTag" href="https://www.instagram.com/sergio05rule/">Developed by @sergio05rule</a>
                 </footer>
