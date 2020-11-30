@@ -4,7 +4,10 @@ import mongoose from 'mongoose'
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 import dotenv from 'dotenv'
+import path from 'path';
 import orderRouter from './routers/orderRouter.js';
+import uploadRouter from './routers/uploadRouter.js';
+
 
 dotenv.config();
 
@@ -33,6 +36,7 @@ app.get('/api/products/:id', (req, res) => {
   });
 */
 
+app.use('/api/uploads', uploadRouter);
 // let's use API userRouter
 app.use('/api/users',userRouter);
 
@@ -43,6 +47,10 @@ app.use('/api/orders', orderRouter);
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
   });
+
+const __dirname = path.resolve(); // return the current folder
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
 // Define first route '/' , request & response (handler of the path)
 app.get('/', (req,res) => {
     res.send('Server is ready'); // response
