@@ -10,8 +10,14 @@ const productRouter = express.Router();
 productRouter.get(
   '/',
   expressAsyncHandler(async (req, res) => {
-    const products = await Product.find({/* return all products */});
-    res.send(products);
+    const name = req.query.name || '';
+    //     const seller = req.query.seller || '';
+    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
+    //     const sellerFilter = seller ? { seller } : {};
+    const products = await Product.find({
+      //...sellerFilter,
+      ...nameFilter,
+    }).populate('seller', 'seller.name seller.logo');    res.send(products);
   })
 );
 

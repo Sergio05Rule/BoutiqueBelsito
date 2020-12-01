@@ -18,12 +18,15 @@ import {
 } from '../constants/productConstants';
 
 // function that returns an async function
-export const listProducts = () => async (dispatch) => {
-  dispatch({
+export const listProducts = ({ seller = '', name = '' }) => async (
+  dispatch
+) => {  dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await Axios.get('/api/products');
+    const { data } = await Axios.get(
+      `/api/products?seller=${seller}&name=${name}`
+    );
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data }); //payload indicates that from backend
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
