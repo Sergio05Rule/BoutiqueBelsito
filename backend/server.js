@@ -51,10 +51,17 @@ app.get('/api/config/paypal', (req, res) => {
 const __dirname = path.resolve(); // return the current folder
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
+
 // Define first route '/' , request & response (handler of the path)
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
+/*
 app.get('/', (req,res) => {
     res.send('Server is ready'); // response
 });
+*/
 
 // middleware: error chatcher in router (expressAsyncHandler)
 app.use((err, req, res, next)=>{
