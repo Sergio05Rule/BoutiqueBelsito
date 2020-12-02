@@ -23,9 +23,24 @@ import {
     PRODUCT_REVIEW_CREATE_FAIL,
 } from '../constants/productConstants';
 
+/*
+export const listProducts = () => async (dispatch) => {
+  dispatch({
+    type: PRODUCT_LIST_REQUEST,
+  });
+  try {
+    const { data } = await Axios.get('/api/products');
+    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
+  }
+};
+*/
+
+
 // function that returns an async function
 export const listProducts = ({
-  seller = '',
+  //seller = '',
   name = '',
   category = '',
   order = '',
@@ -38,13 +53,14 @@ export const listProducts = ({
   });
   try {
     const { data } = await Axios.get(
-      `/api/products?seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`
-    );
+      `/api/products?&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`
+      );
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data }); //payload indicates that from backend
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
   }
 };
+
 
 export const listProductCategories = () => async (dispatch) => {
   dispatch({
