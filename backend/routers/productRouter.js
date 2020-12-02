@@ -11,6 +11,7 @@ productRouter.get(
   '/',
   expressAsyncHandler(async (req, res) => {
     const name = req.query.name || '';
+    const shopCode = req.query.name || '';
     const category = req.query.category || '';
     //const seller = req.query.seller || '';
     const order = req.query.order || '';
@@ -81,6 +82,15 @@ productRouter.get(
   })
 );
 
+//create product API
+const sizeStockCount = {
+  S: 0,
+  M: 0,
+  L: 0,
+  XL:0,
+  XXL:0,
+  XXXL:0,
+};
 productRouter.post(
     '/',
     isAuth,
@@ -88,11 +98,13 @@ productRouter.post(
     expressAsyncHandler(async (req, res) => {
       const product = new Product({
         name: 'sample name ' + Date.now(),
+        shopCode: '0000',
         image: '/images/p1.jpg',
         price: 0,
         category: 'sample category',
         brand: 'sample brand',
         countInStock: 0,
+        sizeStockCount: sizeStockCount,
         rating: 0,
         numReviews: 0,
         description: 'sample description',
@@ -111,11 +123,22 @@ productRouter.put(
         const product = await Product.findById(productId);
         if (product) {
         product.name = req.body.name;
+        product.shopCode = req.body.shopCode;
         product.price = req.body.price;
         product.image = req.body.image;
         product.category = req.body.category;
         product.brand = req.body.brand;
         product.countInStock = req.body.countInStock;
+        const sizeStockCount = {
+          S: req.body.S,
+          M: req.body.M,
+          L: req.body.L,
+          XL:req.body.XL,
+          XXL:req.body.XXL,
+          XXXL:req.body.XXL,
+        };
+        product.sizeStockCount = sizeStockCount;
+        //product.sizeStockCount = req.body.sizeStockCount;
         product.description = req.body.description;
         const updatedProduct = await product.save();
         res.send({ message: 'Product Updated', product: updatedProduct });

@@ -9,11 +9,20 @@ import Axios from 'axios';
 export default function ProductEditScreen(props) {
   const productId = props.match.params.id;
   const [name, setName] = useState('');
+  const [shopCode, setshopCode] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState('');
+
+  const [S, setS] = useState('');
+  const [M, setM] = useState('');
+  const [L, setL] = useState('');
+  const [XL, setXL] = useState('');
+  const [XXL, setXXL] = useState('');
+  const [XXXL, setXXXL] = useState('');
   const [brand, setBrand] = useState('');
+
   const [description, setDescription] = useState('');
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -36,10 +45,23 @@ export default function ProductEditScreen(props) {
         dispatch(detailsProduct(productId));
     } else {
       setName(product.name);
+      setshopCode(product.shopCode);
       setPrice(product.price);
       setImage(product.image);
       setCategory(product.category);
       setCountInStock(product.countInStock);
+      product.sizeStockCount.map((size) => (
+          setS(size.S),
+          setM(size.M),
+          setL(size.L),
+          setXL(size.XL),
+          setXXL(size.XXL),
+          setXXXL(size.XXXL)
+      ))
+      console.log(product.name);
+      console.log(product.sizeStockCount);
+      //setS(product.sizeStockCount.S);
+      
       setBrand(product.brand);
       setDescription(product.description);
     }
@@ -47,16 +69,23 @@ export default function ProductEditScreen(props) {
 
 const submitHandler = (e) => {
     e.preventDefault();
-    // TODO: dispatch update product
+    // dispatch update product
     dispatch(
       updateProduct({
         _id: productId,
         name,
+        shopCode,
         price,
         image,
         category,
         brand,
         countInStock,
+        S,
+        M,
+        L,
+        XL,
+        XXL,
+        XXXL,
         description,
         })
     );  
@@ -110,6 +139,16 @@ const submitHandler = (e) => {
                 placeholder="Enter name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="name">Shop Code:</label>
+              <input
+                id="shopCode"
+                type="text"
+                placeholder="Enter Shop Code"
+                value={shopCode}
+                onChange={(e) => setshopCode(e.target.value)}
               ></input>
             </div>
             <div>
@@ -173,6 +212,66 @@ const submitHandler = (e) => {
                 placeholder="Enter countInStock"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
+              ></input>
+            </div>
+            <div>
+            <label htmlFor="sizeStockCount">S Size in Stock</label>
+              <input
+                id="S"
+                type="number"
+                placeholder="Enter S Size Count in Stock"
+                value={S} //here
+                onChange={(e) => setS(e.target.value)}
+              ></input>
+            </div>
+            <div>
+            <label htmlFor="sizeStockCount">M Size in Stock</label>
+              <input
+                id="M"
+                type="number"
+                placeholder="Enter M Size Count in Stock"
+                value={M} //here
+                onChange={(e) => setM(e.target.value)}
+              ></input>
+            </div>
+            <div>
+            <label htmlFor="sizeStockCount">L Size in Stock</label>
+              <input
+                id="L"
+                type="number"
+                placeholder="Enter L Size Count in Stock"
+                value={L} //here
+                onChange={(e) => setL(e.target.value)}
+              ></input>
+            </div>
+            <div>
+            <label htmlFor="sizeStockCount">XL Size in Stock</label>
+              <input
+                id="XL"
+                type="number"
+                placeholder="Enter XL Size Count in Stock"
+                value={XL} //here
+                onChange={(e) => setXL(e.target.value)}
+              ></input>
+            </div>
+            <div>
+            <label htmlFor="sizeStockCount">XXL Size in Stock</label>
+              <input
+                id="XXL"
+                type="number"
+                placeholder="Enter XXL Size Count in Stock"
+                value={XXL} //here
+                onChange={(e) => setXXL(e.target.value)}
+              ></input>
+            </div>
+            <div>
+            <label htmlFor="sizeStockCount">XXXL Size in Stock</label>
+              <input
+                id="XXXL"
+                type="number"
+                placeholder="Enter XXL Size Count in Stock"
+                value={XXXL} //here
+                onChange={(e) => setXXXL(e.target.value)}
               ></input>
             </div>
             <div>
