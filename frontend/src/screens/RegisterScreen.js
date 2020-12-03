@@ -24,7 +24,13 @@ export default function RegisterScreen(props) {
     if (password !== confirmPassword) {
       alert('Password and confirm password are not match');
     } else {
-      dispatch(register(name, email, password));
+      if (password.length <6 )
+      {
+      alert('Password must at least be 6 charaters long');
+      }
+      else{
+        dispatch(register(name, email, password));
+      }
     }
   };
   useEffect(() => {

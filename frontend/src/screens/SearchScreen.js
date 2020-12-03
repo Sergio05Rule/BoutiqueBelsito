@@ -73,6 +73,16 @@ export default function SearchScreen(props) {
             <option value="toprated">Avg. Customer Reviews</option>
           </select>
         </div>
+        <div>
+          <button onClick={(e) => {
+              props.history.push(getFilterUrl({ name : 'all',
+              category :'all',
+              min : 0,
+              max : 0,
+              rating : 0,
+              order : 'newest' }));
+            }}>Reset Filter </button>
+        </div>
       </div>
       <div className="row top">
         <div className="col-1">
