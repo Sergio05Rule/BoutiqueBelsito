@@ -71,7 +71,7 @@ function App() {
                     </div>
                     <div>
                         <Link to="/cart" >
-                            <i class="fa fa-shopping-cart" style={{'font-size' : '3rem'}}></i>
+                            <i className="fa fa-shopping-cart" style={{'fontSize' : '3rem'}}></i>
                             {cartItems.length > 0 && (
                                 <span className="badge">{cartItems.length}</span>
                         )}

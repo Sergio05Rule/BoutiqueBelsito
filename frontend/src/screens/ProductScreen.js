@@ -6,8 +6,16 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
 import { PRODUCT_REVIEW_CREATE_RESET } from '../constants/productConstants';
+import { listOrderMine } from '../actions/orderActions';
+
 
 export default function ProductScreen(props) {
+  // retrive order list to check if the client has done the payment and can review the product
+  // questa operazione resetta lo state di redux
+  let isProductBuyed = false;
+  const orderMineList = useSelector((state) => state.orderMineList);
+  const { l, e, orders } = orderMineList;
+
   const dispatch = useDispatch();
   const productId = props.match.params.id;
   const [qty, setQty] = useState(0);
@@ -34,6 +42,7 @@ export default function ProductScreen(props) {
       setComment('');
       dispatch({ type: PRODUCT_REVIEW_CREATE_RESET });
     }
+    dispatch(listOrderMine());// heree     
     dispatch(detailsProduct(productId));
   }, [dispatch, productId, successReviewCreate]);
   
@@ -42,10 +51,34 @@ export default function ProductScreen(props) {
   };
   const submitHandler = (e) => {
     e.preventDefault();
+
     if (comment && rating) {
-      dispatch(
-        createReview(productId, { rating, comment, name: userInfo.name })
-      );
+        // check if the user have acquired, paid and get deliverd the product
+     for ( let i = 0 ; i <orders.length;i++)
+     {
+       if (orders[i].isPaid === true && orders[i].isDelivered === true)
+       {
+         for (let j = 0; j< orders[i].orderItems.length; j++)
+       {
+         if( orders[i].orderItems[j].product === productId)
+         {
+           isProductBuyed = true;
+         }
+       }
+       }
+       
+     }
+      if(isProductBuyed)
+      {
+        dispatch(
+          createReview(productId, { rating, comment, name: userInfo.name })
+        );
+      }
+      else
+      {
+        alert('You must have acquire the product before submiting a review');
+      }
+      
     } else {
       alert('Please enter comment and rating');
     }
@@ -113,14 +146,14 @@ export default function ProductScreen(props) {
                   {product.sizeStockCount.map((sizeCount) => (
                   (sizeCount.S > 0 || sizeCount.M > 0 || sizeCount.L > 0 || sizeCount.XL > 0 || sizeCount.XXL > 0 ||sizeCount.XXXL > 0)  && (
                     <>
-
                       <li>          
-                      <div class="row">
+                      <div className="row">
                           <label>Size</label>
                           <select title="Scegli una opzione"
                             onChange={(e) => setSize(e.target.value)}
+                            defaultValue="Default"
                             >
-                            <option value="" disabled selected>Select your option</option>
+                            <option value="Default" disabled>Select your option</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
@@ -188,7 +221,6 @@ export default function ProductScreen(props) {
                       </li>
                       </>
                       )}
-
                       {size === "L" && (
                         <>
                         <li>
@@ -217,7 +249,6 @@ export default function ProductScreen(props) {
                       </li>
                       </>
                       )}
-
                       {size === "XL" && (
                         <>
                         <li>
@@ -246,7 +277,6 @@ export default function ProductScreen(props) {
                       </li>
                       </>
                       )}
-
                       {size === "XXL" && (
                         <>
                         <li>
@@ -275,7 +305,6 @@ export default function ProductScreen(props) {
                       </li>
                       </>
                       )}
-
                       {size === "XXXL" && (
                         <>
                         <li>
@@ -304,7 +333,6 @@ export default function ProductScreen(props) {
                       </li>
                       </>
                       )}
-
                       {/*
                       product.sizeStockCount.map((size) => (
                       <li>
@@ -360,7 +388,7 @@ export default function ProductScreen(props) {
                 </li>
               ))}
               <li>
-                {userInfo ? (
+                  { userInfo ? (
                   <form className="form" onSubmit={submitHandler}>
                     <div>
                       <h2>Write a customer review</h2>
@@ -407,7 +435,8 @@ export default function ProductScreen(props) {
                   <MessageBox>
                     Please <Link to="/signin">Sign In</Link> to write a review
                   </MessageBox>
-                )}
+                )
+                }
               </li>
             </ul>
           </div>

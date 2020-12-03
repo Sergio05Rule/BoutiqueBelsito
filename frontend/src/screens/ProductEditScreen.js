@@ -33,6 +33,7 @@ export default function ProductEditScreen(props) {
     error: errorUpdate,
     success: successUpdate,
   } = productUpdate;
+  
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -56,10 +57,7 @@ export default function ProductEditScreen(props) {
           setXXL(size.XXL),
           setXXXL(size.XXXL)
       ))
-      console.log(product.name);
-      console.log(product.sizeStockCount);
       //setS(product.sizeStockCount.S);
-      
       setBrand(product.brand);
       setDescription(product.description);
     }

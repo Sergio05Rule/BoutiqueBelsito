@@ -14,7 +14,7 @@ export default function CartScreen(props) {
         ? props.location.search.split('=')[2] // if exisit the cast->Number()
         : ''; 
 
-    console.log(props, qty, size);
+    //console.log(props, qty, size);
     const cart = useSelector(state => state.cart);
     const {cartItems} = cart;
     // useEffect input (function, dependecy list)
