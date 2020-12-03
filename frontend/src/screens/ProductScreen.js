@@ -10,7 +10,8 @@ import { PRODUCT_REVIEW_CREATE_RESET } from '../constants/productConstants';
 export default function ProductScreen(props) {
   const dispatch = useDispatch();
   const productId = props.match.params.id;
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(0);
+  const [size, setSize] = useState('');
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const userSignin = useSelector((state) => state.userSignin);
@@ -37,7 +38,7 @@ export default function ProductScreen(props) {
   }, [dispatch, productId, successReviewCreate]);
   
   const addToCartHandler = () => {
-    props.history.push(`/cart/${productId}?qty=${qty}`);
+    props.history.push(`/cart/${productId}?qty=${qty}?size=${size}`);
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -98,17 +99,41 @@ export default function ProductScreen(props) {
                     <div className="row">
                       <div>Status</div>
                       <div>
-                        {product.countInStock > 0 ? (
+                        {product.sizeStockCount.map((sizeCount) => (
+                          (sizeCount.S > 0 || sizeCount.M > 0 || sizeCount.L > 0 || sizeCount.XL > 0 || sizeCount.XXL > 0 || sizeCount.XXXL > 0) ? (
                           <span className="success">In Stock</span>
                         ) : (
                           <span className="danger">Unavailable</span>
-                        )}
+                        )))}
                       </div>
                     </div>
                   </li>
-                  {product.countInStock > 0 && (
+
+
+                  {product.sizeStockCount.map((sizeCount) => (
+                  (sizeCount.S > 0 || sizeCount.M > 0 || sizeCount.L > 0 || sizeCount.XL > 0 || sizeCount.XXL > 0 ||sizeCount.XXXL > 0)  && (
                     <>
-                      <li>
+
+                      <li>          
+                      <div class="row">
+                          <label>Size</label>
+                          <select title="Scegli una opzione"
+                            onChange={(e) => setSize(e.target.value)}
+                            >
+                            <option value="" disabled selected>Select your option</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXL">XXXL</option>
+                          </select>
+                      </div>
+                      </li>
+
+                      {size === "S" && (
+                        <>
+                        <li>
                         <div className="row">
                           <div>Qty</div>
                           <div>
@@ -116,17 +141,194 @@ export default function ProductScreen(props) {
                               value={qty}
                               onChange={(e) => setQty(e.target.value)}
                             >
-                              {[...Array(product.countInStock).keys()].map(
-                                (x) => (
-                                  <option key={x + 1} value={x + 1}>
-                                    {x + 1}
+                              <option>
+                                    0
                                   </option>
+                              {[...Array(sizeCount.S).keys()].map(
+                                (x) => (
+                                  
+                                  <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                               
                                 )
                               )}
                             </select>
                           </div>
                         </div>
                       </li>
+                      </>
+                      )}
+
+                      {size === "M" && (
+                        <>
+                        <li>
+                        <div className="row">
+                          <div>Qty</div>
+                          <div>
+                            <select
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              <option>
+                                    0
+                                  </option>
+                              {[...Array(sizeCount.M).keys()].map(
+                                (x) => (
+                                  
+                                  <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                               
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      </>
+                      )}
+
+                      {size === "L" && (
+                        <>
+                        <li>
+                        <div className="row">
+                          <div>Qty</div>
+                          <div>
+                            <select
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              <option>
+                                    0
+                                  </option>
+                              {[...Array(sizeCount.L).keys()].map(
+                                (x) => (
+                                  
+                                  <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                               
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      </>
+                      )}
+
+                      {size === "XL" && (
+                        <>
+                        <li>
+                        <div className="row">
+                          <div>Qty</div>
+                          <div>
+                            <select
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              <option>
+                                    0
+                                  </option>
+                              {[...Array(sizeCount.XL).keys()].map(
+                                (x) => (
+                                  
+                                  <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                               
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      </>
+                      )}
+
+                      {size === "XXL" && (
+                        <>
+                        <li>
+                        <div className="row">
+                          <div>Qty</div>
+                          <div>
+                            <select
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              <option>
+                                    0
+                                  </option>
+                              {[...Array(sizeCount.XXL).keys()].map(
+                                (x) => (
+                                  
+                                  <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                               
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      </>
+                      )}
+
+                      {size === "XXXL" && (
+                        <>
+                        <li>
+                        <div className="row">
+                          <div>Qty</div>
+                          <div>
+                            <select
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              <option>
+                                    0
+                                  </option>
+                              {[...Array(sizeCount.XXXL).keys()].map(
+                                (x) => (
+                                  
+                                  <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                               
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      </>
+                      )}
+
+                      {/*
+                      product.sizeStockCount.map((size) => (
+                      <li>
+                        <div className="row">
+                          <div></div>
+                          <div>
+                            <select
+                              value={sizes}
+                              onChange={(e) => setSize(e.target.value)}
+                            >
+                              {[...Array(size.S).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      ))*/}
+                      {size !== "" && qty > 0 && (
+                        <>
                       <li>
                         <button
                           onClick={addToCartHandler}
@@ -135,8 +337,10 @@ export default function ProductScreen(props) {
                           Add to Cart
                         </button>
                       </li>
+                      </>)}
+
                     </>
-                  )}
+                  )))}
                 </ul>
               </div>
             </div>

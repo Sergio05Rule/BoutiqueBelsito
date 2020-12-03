@@ -13,7 +13,6 @@ export default function ProductEditScreen(props) {
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
-  const [countInStock, setCountInStock] = useState('');
 
   const [S, setS] = useState('');
   const [M, setM] = useState('');
@@ -49,7 +48,6 @@ export default function ProductEditScreen(props) {
       setPrice(product.price);
       setImage(product.image);
       setCategory(product.category);
-      setCountInStock(product.countInStock);
       product.sizeStockCount.map((size) => (
           setS(size.S),
           setM(size.M),
@@ -79,7 +77,6 @@ const submitHandler = (e) => {
         image,
         category,
         brand,
-        countInStock,
         S,
         M,
         L,
@@ -202,16 +199,6 @@ const submitHandler = (e) => {
                 placeholder="Enter brand"
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="countInStock">Count In Stock</label>
-              <input
-                id="countInStock"
-                type="text"
-                placeholder="Enter countInStock"
-                value={countInStock}
-                onChange={(e) => setCountInStock(e.target.value)}
               ></input>
             </div>
             <div>

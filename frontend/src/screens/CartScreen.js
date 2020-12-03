@@ -7,19 +7,24 @@ import MessageBox from '../components/MessageBox';
 export default function CartScreen(props) {
   const productId = props.match.params.id; // retrive id from url
   const qty = props.location.search // retrive qty
-    ? Number(props.location.search.split('=')[1]) // if exisit the cast->Number()
+    ? Number(props.location.search.split('=')[1][0]) // if exisit the cast->Number()
     : 1; //else 1
+    
+    const size = props.location.search 
+        ? props.location.search.split('=')[2] // if exisit the cast->Number()
+        : ''; 
 
+    console.log(props, qty, size);
     const cart = useSelector(state => state.cart);
     const {cartItems} = cart;
     // useEffect input (function, dependecy list)
     const dispatch = useDispatch();
     useEffect(()=>{
         if(productId){
-            dispatch(addToCart(productId,qty));
+            dispatch(addToCart(productId,qty,size));
         }
 
-    },[dispatch, productId, qty]);
+    },[dispatch, productId, qty,size]);
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id));
@@ -52,22 +57,118 @@ export default function CartScreen(props) {
                     <div className="min-30">
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                     </div>
+
+
+                    <div>Size:{item.size}</div>
+
                     <div>
+                    {item.size === 'S' &&(
                     <select
                         value={item.qty}
                         onChange={(e) =>
                         dispatch(
-                            addToCart(item.product, Number(e.target.value))
+                            addToCart(item.product, Number(e.target.value), item.size )
                         )
                         }
                     >
-                        {[...Array(item.countInStock).keys()].map((x) => (
+                        {[...Array(item.sizeStockCount[0].S).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                             {x + 1}
                         </option>
                         ))}
                     </select>
+                    )}
+
+                    { item.size === 'M' &&(
+                    <select
+                        value={item.qty}
+                        onChange={(e) =>
+                        dispatch(
+                            addToCart(item.product, Number(e.target.value), item.size )
+                        )
+                        }
+                    >
+                        {[...Array(item.sizeStockCount[0].M).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                        </option>
+                        ))}
+                    </select>
+                    )}
+
+                    { item.size === 'L' &&(
+                    <select
+                        value={item.qty}
+                        onChange={(e) =>
+                        dispatch(
+                            addToCart(item.product, Number(e.target.value), item.size )
+                        )
+                        }
+                    >
+                        {[...Array(item.sizeStockCount[0].L).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                        </option>
+                        ))}
+                    </select>
+                    )}
+
+                    { item.size === 'XL' &&(
+                    <select
+                        value={item.qty}
+                        onChange={(e) =>
+                        dispatch(
+                            addToCart(item.product, Number(e.target.value), item.size )
+                        )
+                        }
+                    >
+                        {[...Array(item.sizeStockCount[0].XL).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                        </option>
+                        ))}
+                    </select>
+                    )}  
+
+                    { item.size === 'XXL' &&(
+                    <select
+                        value={item.qty}
+                        onChange={(e) =>
+                        dispatch(
+                            addToCart(item.product, Number(e.target.value), item.size )
+                        )
+                        }
+                    >
+                        {[...Array(item.sizeStockCount[0].XXL).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                        </option>
+                        ))}
+                    </select>
+                    )}   
+
+                      { item.size === 'XXXL' &&(
+                    <select
+                        value={item.qty}
+                        onChange={(e) =>
+                        dispatch(
+                            addToCart(item.product, Number(e.target.value), item.size )
+                        )
+                        }
+                    >
+                        {[...Array(item.sizeStockCount[0].XXXL).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                        </option>
+                        ))}
+                    </select>
+                    )}     
+
                     </div>
+
+
+
+
                     <div>{item.price}€</div>
                     <div>
                     <button

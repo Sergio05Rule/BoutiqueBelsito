@@ -103,7 +103,6 @@ productRouter.post(
         price: 0,
         category: 'sample category',
         brand: 'sample brand',
-        countInStock: 0,
         sizeStockCount: sizeStockCount,
         rating: 0,
         numReviews: 0,
@@ -128,7 +127,6 @@ productRouter.put(
         product.image = req.body.image;
         product.category = req.body.category;
         product.brand = req.body.brand;
-        product.countInStock = req.body.countInStock;
         const sizeStockCount = {
           S: req.body.S,
           M: req.body.M,

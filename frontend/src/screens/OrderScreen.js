@@ -136,6 +136,9 @@ export default function OrderScreen(props) {
                           </Link>
                         </div>
                         <div>
+                         Size: {item.size} 
+                        </div>
+                        <div>
                           {item.qty} x {item.price}€ = {item.qty * item.price}€
                         </div>
                       </div>

@@ -75,7 +75,9 @@ export default function PlaceOrderScreen(props) {
                             {item.name}
                           </Link>
                         </div>
-
+                        <div>
+                          Size: {item.size}
+                        </div>
                         <div>
                           {item.qty} x {item.price}€ = {item.qty * item.price}€
                         </div>
