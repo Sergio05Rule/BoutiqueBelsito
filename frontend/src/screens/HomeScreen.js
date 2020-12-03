@@ -3,6 +3,7 @@ import Product from '../components/Product';
 import axios from 'axios'
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import CookieConsent, { Cookies } from "react-cookie-consent";
 
 export default function HomeScreen() {
   const [products, setProducts] = useState([]); //React hook to manage state of react component
@@ -30,6 +31,13 @@ export default function HomeScreen() {
   //Render section of the components
   return (
     <div>
+      <CookieConsent
+       buttonStyle={{ color: "#203040"}}
+       expires={150}
+       debug={true}
+       style={{ background: "#203040"}}
+       >This website uses cookies to enhance the user experience.
+       </CookieConsent>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -42,5 +50,6 @@ export default function HomeScreen() {
         </div>
       )}
     </div>
+  
   );
 }
