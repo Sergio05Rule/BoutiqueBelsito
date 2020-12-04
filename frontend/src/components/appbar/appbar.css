@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap%22");
+
+#appbarTodo {
+	font-family: "Lobster", cursive;
+	background-color: rgba(0, 0, 0, 0.658);
+}
+#searchBar {
+	font-family: "Pridi", cursive;
+	font-size: 10px;
+}
+/*
+.navbar-brand.mt-3 {
+	margin: 1.3rem;
+	width: 5%;
+}
+#searchBarButton {
+	font-family: "Bangers", cursive;
+	font-size: 16px;
+	color: white;
+}
+*/
+/* NAVBAR INPUT */
+#inputBar {
+	border-radius: 1rem;
+}
+#appBarTitle {
+	font-family: "Bangers", cursive;
+	font-size: 30px;
+	margin-left: 2rem;
+}
+#smallLabel {
+	font-size: 13px;
+	margin-left: 0.8rem;
+}

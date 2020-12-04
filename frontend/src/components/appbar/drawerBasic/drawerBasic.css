@@ -1,0 +1,19 @@
+/* DRAWER */
+.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiPaper-elevation16 {
+	background-color: #20304091;
+	color: rgba(245, 245, 245, 0.829);
+}
+/* DRAWER DIVIDER */
+.MuiDivider-root.MuiDivider-light {
+	background-color: rgba(255, 255, 255, 0.747);
+}
+/* DRAWER BACK BUTTON */
+#buttonChevron {
+	float: right;
+	color: rgba(245, 245, 245, 0.829);
+}
+
+div.MuiListItemIcon-root svg path {
+	color: white;
+    margin-left: 1rem;
+}
