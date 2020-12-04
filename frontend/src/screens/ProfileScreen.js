@@ -35,7 +35,7 @@ const submitHandler = (e) => {
 e.preventDefault();
 // dispatch update profile
 if (password !== confirmPassword) {
-    alert('Password and Confirm Password Are Not Matched');
+    alert('Password e Conferma Password non corrispondo');
   } else {
     dispatch(updateUserProfile({ userId: user._id, name, email, password }));
   }
@@ -44,7 +44,7 @@ return (
 <div>
     <form className="form" onSubmit={submitHandler}>
     <div>
-        <h1>User Profile</h1>
+        <h1>Modifica Profilo:</h1>
     </div>
     {loading ? (
         <LoadingBox></LoadingBox>
@@ -58,15 +58,15 @@ return (
             )}
             {successUpdate && (
               <MessageBox variant="success">
-                Profile Updated Successfully
+                Profilo aggiornato con successo
               </MessageBox>
             )}
         <div>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Nome utente</label>
             <input
             id="name"
             type="text"
-            placeholder="Enter name"
+            placeholder="Inserisci nuovo nome utente"
             value={name}
             onChange={(e) => setName(e.target.value)}            
             ></input>
@@ -76,7 +76,7 @@ return (
             <input
             id="email"
             type="email"
-            placeholder="Enter email"
+            placeholder="Inserisci nuova mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             ></input>
@@ -86,23 +86,23 @@ return (
             <input
             id="password"
             type="password"
-            placeholder="Enter password"
+            placeholder="Inserisci nuova password"
             onChange={(e) => setPassword(e.target.value)}
             ></input>
         </div>
         <div>
-            <label htmlFor="confirmPassword">confirm Password</label>
+            <label htmlFor="confirmPassword">Conferma Password</label>
             <input
             id="confirmPassword"
             type="password"
-            placeholder="Enter confirm password"
+            placeholder="Inserisci nuova password di conferma"
             onChange={(e) => setConfirmPassword(e.target.value)}
             ></input>
         </div>
         <div>
             <label />
             <button className="primary" type="submit">
-            Update
+            Aggiorna profilo
             </button>
         </div>
         </>

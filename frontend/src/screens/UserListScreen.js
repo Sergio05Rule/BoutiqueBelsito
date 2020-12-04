@@ -24,7 +24,7 @@ export default function UserListScreen(props) {
       });
   }, [dispatch, successDelete]);
   const deleteHandler = (user) => {
-    if (window.confirm('Are you sure?')) {
+    if (window.confirm("Sei sicuro di voler eliminare definitivamente il profilo dell'utente?")) {
       dispatch(deleteUser(user._id));
     }
   };
@@ -34,7 +34,7 @@ export default function UserListScreen(props) {
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {successDelete && (
-        <MessageBox variant="success">User Deleted Successfully</MessageBox>
+        <MessageBox variant="success">Utente eliminato correttamente</MessageBox>
       )}
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -44,12 +44,12 @@ export default function UserListScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>User ID:</th>
-              <th>Name</th>
+              <th>ID Utente:</th>
+              <th>Nome utente</th>
               <th>email</th>
-              <th>is Seller</th>
-              <th>is Admin</th>
-              <th>Actions</th>
+              <th>E' un rivenditore</th>
+              <th>E' admin</th>
+              <th>Azioni</th>
             </tr>
           </thead>
           <tbody>
@@ -58,22 +58,22 @@ export default function UserListScreen(props) {
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.isSeller ? 'YES' : ' NO'}</td>
-                <td>{user.isAdmin ? 'YES' : 'NO'}</td>
+                <td>{user.isSeller ? 'SI' : ' NO'}</td>
+                <td>{user.isAdmin ? 'SI' : 'NO'}</td>
                 <td>
                 <button
                     type="button"
                     className="small"
                     onClick={() => props.history.push(`/user/${user._id}/edit`)}
                   >
-                    Edit
+                    Modifica
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(user)}
                   >
-                    Delete
+                    Cancella
                   </button>
                 </td>
               </tr>

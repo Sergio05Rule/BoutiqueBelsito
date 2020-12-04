@@ -37,10 +37,10 @@ export default function CartScreen(props) {
     return (
     <div className="row top">
         <div className="col-2">
-        <h1>Shopping Cart</h1>
+        <h1>Carrello </h1>
         {cartItems.length === 0 ? (
             <MessageBox>
-            Cart is empty. <Link to="/">Go Shopping</Link>
+            Il carello è vuoto.<Link to="/">Go Shopping!</Link>
             </MessageBox>
         ) : (
             <ul>
@@ -59,7 +59,7 @@ export default function CartScreen(props) {
                     </div>
 
 
-                    <div>Size:{item.size}</div>
+                    <div>Taglia:{item.size}</div>
 
                     <div>
                     {item.size === 'S' &&(
@@ -163,11 +163,7 @@ export default function CartScreen(props) {
                         ))}
                     </select>
                     )}     
-
                     </div>
-
-
-
 
                     <div>{item.price}€</div>
                     <div>
@@ -175,7 +171,7 @@ export default function CartScreen(props) {
                         type="button"
                         onClick={() => removeFromCartHandler(item.product)}
                     >
-                        Delete
+                        Rimuovi
                     </button>
                     </div>
                 </div>
@@ -189,7 +185,7 @@ export default function CartScreen(props) {
             <ul>
             <li>
                 <h2>
-                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : 
+                Subtotale ({cartItems.reduce((a, c) => a + c.qty, 0)} oggetto/i) : 
                 {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}€
                 </h2>
             </li>
@@ -200,7 +196,7 @@ export default function CartScreen(props) {
                 className="primary block"
                 disabled={cartItems.length === 0}
                 >
-                Proceed to Checkout
+                Procedi al Checkout
                 </button>
             </li>
             </ul>

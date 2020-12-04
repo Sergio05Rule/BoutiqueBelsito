@@ -49,7 +49,7 @@ export default function UserEditScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Edit User {name}</h1>
+          <h1>Modifica profilo utente{name}</h1>
           {loadingUpdate && <LoadingBox></LoadingBox>}
           {errorUpdate && (
             <MessageBox variant="danger">{errorUpdate}</MessageBox>
@@ -62,27 +62,27 @@ export default function UserEditScreen(props) {
         ) : (
           <>
             <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Nome utente</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Inserisci nuovo nome utente"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">email</label>
               <input
                 id="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder="Inserisci nuova email utente"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="isSeller">Is Seller</label>
+              <label htmlFor="isSeller">E' un rivenditore</label>
               <input
                 id="isSeller"
                 type="checkbox"
@@ -91,7 +91,7 @@ export default function UserEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="isAdmin">Is Admin</label>
+              <label htmlFor="isAdmin">E' Admin</label>
               <input
                 id="isAdmin"
                 type="checkbox"
@@ -101,7 +101,7 @@ export default function UserEditScreen(props) {
             </div>
             <div>
               <button type="submit" className="primary">
-                Update
+                Aggiorna
               </button>
             </div>
           </>
