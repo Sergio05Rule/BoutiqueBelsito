@@ -47,10 +47,13 @@ h2 {
   padding: 1rem 0;
 }
 a {
-  text-decoration: none;
+  text-decoration: none!important;
 }
 a:hover {
-  color: #ff8000;
+  color: rgb(255, 212, 45)!important;
+}
+a.brand:hover {
+  color:white!important;
 }
 ul {
   padding: 0;
@@ -95,14 +98,18 @@ button.small {
 /* Header */
 header a {
   color: #ffffff;
+  text-decoration: none;
+
 }
 
 /* Main title */
 a.brand {
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 4rem;
   font-family: brandFont;
   margin-left: 3rem;
+  text-decoration: none!important;
+
 }
 
 .badge{
@@ -315,7 +322,7 @@ img.large {
   margin: 0 0.2rem;
 }
 
-/* Search */
+/* Search 
 .search button {
   border-radius: 0 0.5rem 0.5rem 0;
   border-right: none;
@@ -329,6 +336,7 @@ img.large {
 .active {
   font-weight: bold;
 }
+*/
 
 /* My Tags */
 .personalTag{

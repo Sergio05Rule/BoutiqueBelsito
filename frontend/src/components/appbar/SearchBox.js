@@ -5,21 +5,23 @@ export default function SearchBox(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     props.history.push(`/search/name/${name}`);
+    
   };
   return (
-    <form className="search" onSubmit={submitHandler}>
-      <div className="row">
-        <input
-          type="text"
-          name="q"
-          id="q"
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Search..."
-        ></input>
-        <button className="primary" type="submit">
-          <i className="fa fa-search"></i>
-        </button>
-      </div>
-    </form>
+  <form className="input-group mb-3"
+  onSubmit={submitHandler}
+  >
+    <input 
+      type="text" 
+      className="form-control" 
+      placeholder="..." 
+      aria-label="Recipient's username" 
+      onChange={(e) => setName(e.target.value)}
+      aria-describedby="basic-addon2"></input>
+      <button 
+        className="btn btn-outline-secondary" 
+        type="submit"
+      >Search</button>
+  </form>
   );
 }

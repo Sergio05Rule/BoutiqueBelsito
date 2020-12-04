@@ -72,7 +72,7 @@ const Aside = props => {
 							)}
 					</Link>
 					{userInfo ? (
-									<div className="dropdown ml-2 mr-2">
+									<div className="dropdown ml-4 mr-4">
 										<Link to="#" >
 											{userInfo.name} <i className="fa fa-caret-down"></i>{' '}
 										</Link>
@@ -91,7 +91,7 @@ const Aside = props => {
 										</ul>
 									</div>
 								) : (
-										<Link className="ml-2 mr-2" to="/signin">Sign In</Link>
+										<Link className="ml-4 mr-4" to="/signin">Sign In</Link>
 								)}
 								{userInfo && userInfo.isAdmin && (
 									<div className="dropdown">

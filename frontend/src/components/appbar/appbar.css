@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster&display=swap%22");
 
 #appbarTodo {
-	font-family: "Lobster", cursive;
-	background-color: rgba(0, 0, 0, 0.658);
+	background-color: #203040;
 }
 #searchBar {
-	font-family: "Pridi", cursive;
 	font-size: 10px;
 }
 /*
@@ -24,7 +22,6 @@
 	border-radius: 1rem;
 }
 #appBarTitle {
-	font-family: "Bangers", cursive;
 	font-size: 30px;
 	margin-left: 2rem;
 }

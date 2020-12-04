@@ -28,6 +28,7 @@ import MessageBox from './components/MessageBox';
 import AppBar from './components/appbar/appbar';
 import './components/appbar/appbar.css';
 import './components/appbar/drawerBasic/drawerBasic.css';
+import './components/appbar/SearchBox.css';
 
 
 function App() {
