@@ -5,6 +5,8 @@ import data from '../data.js';
 import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
 import sendRegisterEmail from '../AWS_SES/ses_send_register_email.js'
+import sendForgotPasswordEmail from '../AWS_SES/ses_send_forgot_password_email.js'
+
 
 // define multiple file for differt router, not all inside server.js
 const userRouter = express.Router();
@@ -39,6 +41,27 @@ userRouter.post(
   );
 
 userRouter.post(
+  '/forgotpassword',
+  expressAsyncHandler(async (req, res) => {
+      const user = await User.findOne({ email: req.body.email });
+      if (user) {
+          const newPassword = Math.floor(100000 + Math.random() * 900000);
+          console.log(newPassword);
+          user.password = bcrypt.hashSync(String(newPassword), 8);
+          const updatedUser = await user.save();
+          res.send({ updatedUser });
+          sendForgotPasswordEmail(user, newPassword);
+
+          return;
+        }
+        else{
+          res.status(401).send({ message: 'Password inserita non valida, non legata ad alcun account!' });
+        }
+      }
+      
+  ));
+
+userRouter.post(
 '/register',
 expressAsyncHandler(async (req, res) => {
     const user = new User({
@@ -55,7 +78,6 @@ expressAsyncHandler(async (req, res) => {
     token: generateToken(createdUser),
     });
     // Send register email
-    console.log(createdUser.email);
     sendRegisterEmail( createdUser.email, createdUser.name);
 })
 );

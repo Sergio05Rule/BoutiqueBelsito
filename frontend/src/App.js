@@ -15,6 +15,7 @@ import ProductListScreen from './screens/ProductListScreen';
 import ProductScreen from './screens/ProductScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
 import OrderListScreen from './screens/OrderListScreen';
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
                 <Route path="/signin" component={SigninScreen}></Route>
                 <Route path="/register" component={RegisterScreen}></Route>
+                <Route path="/forgotpassword" component={ForgotPasswordScreen}></Route>
                 <Route path="/shipping" component={ShippingAddressScreen}></Route>
                 <Route path="/payment" component={PaymentMethodScreen}></Route>
                 <Route path="/placeorder" component={PlaceOrderScreen}></Route>
