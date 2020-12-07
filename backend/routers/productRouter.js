@@ -77,7 +77,7 @@ productRouter.get(
     if (product) {
       res.send(product);
     } else {
-      res.status(404).send({ message: 'Product Not Found' });
+      res.status(404).send({ message: 'Prodotto non trovato' });
     }
   })
 );
@@ -109,7 +109,7 @@ productRouter.post(
         description: 'sample description',
       });
       const createdProduct = await product.save();
-      res.send({ message: 'Product Created', product: createdProduct });
+      res.send({ message: 'Prodotto creato con successo', product: createdProduct });
     })
   );
 
@@ -139,9 +139,9 @@ productRouter.put(
         //product.sizeStockCount = req.body.sizeStockCount;
         product.description = req.body.description;
         const updatedProduct = await product.save();
-        res.send({ message: 'Product Updated', product: updatedProduct });
+        res.send({ message: 'Prodotto aggiornato', product: updatedProduct });
         } else {
-        res.status(404).send({ message: 'Product Not Found' });
+        res.status(404).send({ message: 'Prodotto non trovato' });
         }
     })
 );
@@ -156,7 +156,7 @@ productRouter.delete(
         const deleteProduct = await product.remove();
         res.send({ message: 'Product Deleted', product: deleteProduct });
       } else {
-        res.status(404).send({ message: 'Product Not Found' });
+        res.status(404).send({ message: 'Prodotto non trovato' });
       }
     })
   );
@@ -171,7 +171,7 @@ productRouter.post(
       if (product.reviews.find((x) => x.name === req.user.name)) {
         return res
           .status(400)
-          .send({ message: 'You already submitted a review' });
+          .send({ message: 'Hai già scritto una recensione per questo prodotto' });
       }
       const review = {
         name: req.user.name,
@@ -185,11 +185,11 @@ productRouter.post(
         product.reviews.length;
       const updatedProduct = await product.save();
       res.status(201).send({
-        message: 'Review Created',
+        message: 'Recensione creata con successo',
         review: updatedProduct.reviews[updatedProduct.reviews.length - 1],
       });
     } else {
-      res.status(404).send({ message: 'Product Not Found' });
+      res.status(404).send({ message: 'Prodotto non trovato' });
     }
   })
 );
