@@ -20,15 +20,18 @@ export default function OrderListScreen(props) {
     dispatch(listOrders());
 }, [dispatch, successDelete]);
 const deleteHandler = (order) => {
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm("Sei sicuro di voler cancellare definitivamente l'ordine e tutte le informazioni ad esso legato?")) {
         dispatch(deleteOrder(order._id));
       }
     };
   return (
     <div>
-      <h1>Orders</h1>
+      <h1>Ordini pannello di amministrazione</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
+      {successDelete && (
+        <MessageBox variant="success">Ordine eliminato correttamente</MessageBox>
+      )}
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -37,13 +40,13 @@ const deleteHandler = (order) => {
         <table className="table">
           <thead>
             <tr>
-              <th>Order Number</th>
-              <th>Client Name</th>
-              <th>Date</th>
-              <th>Total</th>
-              <th>Paid</th>
-              <th>Delivered</th>
-              <th>actions</th>
+              <th>Numero Ordine</th>
+              <th>Nome Cliente</th>
+              <th>Data</th>
+              <th>Totale</th>
+              <th>Pagato</th>
+              <th>Spedito</th>
+              <th>Azioni</th>
             </tr>
           </thead>
           <tbody>
@@ -67,14 +70,14 @@ const deleteHandler = (order) => {
                       props.history.push(`/order/${order._id}`);
                     }}
                   >
-                    Details
+                    Dettagli
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(order)}
                   >
-                    Delete
+                    Cancella
                   </button>
                 </td>
               </tr>

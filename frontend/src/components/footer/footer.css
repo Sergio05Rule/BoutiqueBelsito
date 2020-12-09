@@ -1,0 +1,76 @@
+.footer{
+    width: 100%;
+    height: 100%;
+}
+
+#button_footer{
+    color:white;
+    text-decoration:none;
+
+}
+
+.contacts{
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: hsl(210, 33%, 19%);
+    color: white;
+
+   bottom:0;
+   width:100%;
+   height:100%;
+
+  }
+
+.personalTag{
+    color: white;
+    font-family: personalTagFont;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+  @font-face{
+	font-family: personalTagFont;
+	src: url(../../Roboto-Thin.ttf);
+  }
+
+  .text-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    padding-right: 1rem;
+  }
+  
+  .col_text{
+      font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content:space-between;
+
+  }
+
+  .col_icon{
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      color: white;
+      align-items: center;
+      align-self: center;
+      height: 50px;
+
+
+  }
+ 
+
+  .footer_visa_image{
+      width: 258px;
+      height: 52px;
+      align-items: center;
+  }
+
+  .footer_shipping_image{
+    width: 258px;
+    height: 52px;
+    align-items: center;
+}

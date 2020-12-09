@@ -18,6 +18,7 @@ const data = {
     products:[
         {
             name: 'Top Donna Backend',
+            shopCode: '00000',
             category: 'Shirts',
             image: '/images/capo1.jpeg',
             price: 120,
@@ -29,6 +30,7 @@ const data = {
         },
         {
             name: 'Top Donna 2',
+            shopCode: '00001',
             category: 'Shirts',
             image: '/images/capo2.jpeg',
             price: 22,
@@ -40,6 +42,7 @@ const data = {
         },
         {
             name: 'Red Dress',
+            shopCode: '00002',
             category: 'Dress',
             image: '/images/capo3.jpeg',
             price: 1000,
@@ -51,6 +54,7 @@ const data = {
         },
         {
             name: 'PS5',
+            shopCode: '00003',
             category: 'console',
             image: '/images/ps5.jpeg',
             price: 499,

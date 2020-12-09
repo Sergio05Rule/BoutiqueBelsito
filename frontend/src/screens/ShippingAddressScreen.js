@@ -29,58 +29,58 @@ export default function ShippingAddressScreen(props) {
       <CheckoutSteps step1 step2></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Shipping Address</h1>
+          <h1>Indirizzo di spedizione:</h1>
         </div>
         <div>
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="fullName">Nome completo</label>
           <input
             type="text"
             id="fullName"
-            placeholder="Enter full name"
+            placeholder="Inserisci nome completo"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Indirizzo</label>
           <input
             type="text"
             id="address"
-            placeholder="Enter address"
+            placeholder="Inserisci indirizzo"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">Città</label>
           <input
             type="text"
             id="city"
-            placeholder="Enter city"
+            placeholder="Inserisci città"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="postalCode">CAP</label>
           <input
             type="text"
             id="postalCode"
-            placeholder="Enter postal code"
+            placeholder="Codice postale"
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="country">Country</label>
+          <label htmlFor="country">Paese</label>
           <input
             type="text"
             id="country"
-            placeholder="Enter country"
+            placeholder="Inserisci paese"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required
@@ -89,7 +89,7 @@ export default function ShippingAddressScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Continue
+            Continua
           </button>
         </div>
       </form>

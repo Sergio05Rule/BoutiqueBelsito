@@ -10,7 +10,9 @@ import {
     PRODUCT_CREATE_RESET,
     PRODUCT_DELETE_RESET,
   } from '../constants/productConstants';
+
 export default function ProductListScreen(props) {
+  const sellerMode = props.match.path.indexOf('/seller') >= 0; //Add
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
@@ -29,6 +31,9 @@ export default function ProductListScreen(props) {
     success: successDelete,
   } = productDelete;
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
@@ -37,13 +42,23 @@ export default function ProductListScreen(props) {
     }
     if (successDelete) {
         dispatch({ type: PRODUCT_DELETE_RESET });
+        ;
     }
-    dispatch(listProducts());
-    }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
+    dispatch(listProducts({ seller: sellerMode ? userInfo._id : '' }));
+    }, [
+      createdProduct,
+      dispatch,
+      props.history,
+      sellerMode,
+      successCreate,
+      successDelete,
+      userInfo._id,
+    ]);
 
   const deleteHandler = (product) => {
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm('Sei sicuro di voler cancellare definitivamente il prodotto dal negozio?')) {
      dispatch(deleteProduct(product._id));
+     dispatch(listProducts({ seller: sellerMode ? userInfo._id : '' }));
     }
   };
   const createHandler = () => {
@@ -52,15 +67,17 @@ export default function ProductListScreen(props) {
   return (
     <div>
         <div className="row">
-            <h1>Products</h1>
+            <h1>Pannello di amministrazione prodotti</h1>
             <button type="button" className="primary" onClick={createHandler}>
-            Create Product
+            Crea prodotto
             </button>
         </div>
 
         {loadingDelete && <LoadingBox></LoadingBox>}
         {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
-
+        {successDelete && (
+        <MessageBox variant="success">Prodotto eliminato correttamente</MessageBox>
+        )}
         {loadingCreate && <LoadingBox></LoadingBox>}
         {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
         {loading ? (
@@ -71,12 +88,13 @@ export default function ProductListScreen(props) {
             <table className="table">
             <thead>
                 <tr>
-                <th>Product ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Category</th>
+                <th>Numero prodotto:</th>
+                <th>Nome prodotto</th>
+                <th>Codice negozio</th>
+                <th>Prezzo</th>
+                <th>Categoria</th>
                 <th>Brand</th>
-                <th>Actions</th>
+                <th>Azioni</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,6 +102,7 @@ export default function ProductListScreen(props) {
                 <tr key={product._id}>
                     <td>{product._id}</td>
                     <td>{product.name}</td>
+                    <td>{product.shopCode}</td>
                     <td>{product.price}</td>
                     <td>{product.category}</td>
                     <td>{product.brand}</td>
@@ -95,14 +114,14 @@ export default function ProductListScreen(props) {
                         props.history.push(`/product/${product._id}/edit`)
                         }
                     >
-                        Edit
+                        Modifica
                     </button>
                     <button
                         type="button"
                         className="small"
                         onClick={() => deleteHandler(product)}
                     >
-                        Delete
+                        Cancella
                     </button>
                     </td>
                 </tr>

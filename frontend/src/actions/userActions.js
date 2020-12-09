@@ -21,7 +21,29 @@ import {
   USER_DELETE_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
+  USER_FORGOTPASSWORD_REQUEST,
+  USER_FORGOTPASSWORD_FAIL,
+  USER_FORGOTPASSWORD_SUCCESS,
 } from '../constants/userConstants';
+
+export const forgotpassword = (email) => async (dispatch) => {
+  dispatch({ type: USER_FORGOTPASSWORD_REQUEST, payload: { email} });
+  try {
+    const { data } = await Axios.post('/api/users/forgotpassword', {
+      email,
+    });
+    dispatch({ type: USER_FORGOTPASSWORD_SUCCESS, payload: data });
+    localStorage.setItem('userInfo', JSON.stringify("data"));
+  } catch (error) {
+    dispatch({
+      type: USER_FORGOTPASSWORD_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 export const register = (name, email, password) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });

@@ -4,6 +4,9 @@ import bcrypt from 'bcryptjs'
 import data from '../data.js';
 import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
+import sendRegisterEmail from '../AWS_SES/ses_send_register_email.js'
+import sendForgotPasswordEmail from '../AWS_SES/ses_send_forgot_password_email.js'
+
 
 // define multiple file for differt router, not all inside server.js
 const userRouter = express.Router();
@@ -33,9 +36,28 @@ userRouter.post(
           return;
         }
       }
-      res.status(401).send({ message: 'Invalid email or password' });
+      res.status(401).send({ message: 'Email o Password inserite errate' });
     })
   );
+
+userRouter.post(
+  '/forgotpassword',
+  expressAsyncHandler(async (req, res) => {
+      const user = await User.findOne({ email: req.body.email });
+      if (user) {
+          const newPassword = Math.floor(100000 + Math.random() * 900000);
+          user.password = bcrypt.hashSync(String(newPassword), 8);
+          const updatedUser = await user.save();
+          res.send({ updatedUser });
+          sendForgotPasswordEmail(user, newPassword);
+          return;
+        }
+        else{
+          res.status(401).send({ message: 'Email inserita non valida, non legata ad alcun account!' });
+        }
+      }
+      
+  ));
 
 userRouter.post(
 '/register',
@@ -53,6 +75,8 @@ expressAsyncHandler(async (req, res) => {
     isAdmin: createdUser.isAdmin,
     token: generateToken(createdUser),
     });
+    // Send register email
+    sendRegisterEmail( createdUser.email, createdUser.name);
 })
 );
 
@@ -63,7 +87,7 @@ expressAsyncHandler(async (req, res) => {
     if (user) {
     res.send(user);
     } else {
-    res.status(404).send({ message: 'User Not Found' });
+    res.status(404).send({ message: 'Utente non trovato' });
     }
 })
 );
@@ -112,13 +136,13 @@ userRouter.put(
           user.email === 'sergio05rule@gmail.com' || 
           user.email === 'danilobelsito10@gmail.com'
           ) {
-          res.status(400).send({ message: 'Can Not Delete Admin User' });
+          res.status(400).send({ message: 'Utenti Admin non possone essere cancellati' });
           return;
         }
         const deleteUser = await user.remove();
-        res.send({ message: 'User Deleted', user: deleteUser });
+        res.send({ message: 'Utente eliminato con successo', user: deleteUser });
       } else {
-        res.status(404).send({ message: 'User Not Found' });
+        res.status(404).send({ message: 'Utente non trovato' });
       }
     })
   );
@@ -133,12 +157,12 @@ userRouter.put(
       if (user) {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
-        user.isSeller = req.body.isSeller || user.isSeller;
+        //user.isSeller = req.body.isSeller || user.isSeller;
         user.isAdmin = req.body.isAdmin || user.isAdmin;
         const updatedUser = await user.save();
-        res.send({ message: 'User Updated', user: updatedUser });
+        res.send({ message: 'Utente aggiornato', user: updatedUser });
       } else {
-        res.status(404).send({ message: 'User Not Found' });
+        res.status(404).send({ message: 'Utente non trovato' });
       }
     })
   );

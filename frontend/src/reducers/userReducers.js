@@ -25,8 +25,24 @@ import {
     USER_UPDATE_REQUEST,
     USER_UPDATE_RESET,
     USER_UPDATE_SUCCESS,
+    USER_FORGOTPASSWORD_REQUEST,
+    USER_FORGOTPASSWORD_SUCCESS,
+    USER_FORGOTPASSWORD_FAIL,
   } from '../constants/userConstants';
   
+  export const userForgotPasswordReducer = (state = {}, action) => {
+    switch (action.type) {
+      case USER_FORGOTPASSWORD_REQUEST:
+        return { loading: true };
+      case USER_FORGOTPASSWORD_SUCCESS:
+        return { loading: false, userInfo: action.payload };
+      case USER_FORGOTPASSWORD_FAIL:
+        return { loading: false, error: action.payload };
+      default:
+        return state;
+    }
+  };
+
   export const userRegisterReducer = (state = {}, action) => {
     switch (action.type) {
       case USER_REGISTER_REQUEST:
