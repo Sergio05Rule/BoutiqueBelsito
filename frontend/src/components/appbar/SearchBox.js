@@ -22,7 +22,7 @@ const CssTextField = withStyles({
     '& .MuiInputBase-root': {
       color: 'white',
     },
-    
+
     '& label.Mui-focused': {
       color: 'white',
     },
@@ -65,7 +65,7 @@ export default function SearchBox(props) {
   };
 
   return (
-    <form className={classes.root}  noValidate >
+    <form className={classes.root} onSubmit={submitHandler} noValidate >
         <CssTextField 
             onChange={(e) => setName(e.target.value)} 
             onSubmit={submitHandler}

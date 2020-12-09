@@ -24,6 +24,7 @@ import UserEditScreen from './screens/UserEditScreen';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
 import AppBar from './components/appbar/appbar';
+import Footer from './components/footer/footer';
 import './components/appbar/appbar.css';
 import './components/appbar/drawerBasic/drawerBasic.css';
 import './components/appbar/SearchBox.css';
@@ -81,20 +82,8 @@ function App() {
                 <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
                 <Route path="/" component={HomeScreen} exact></Route>
             </body>
-           
+            <Footer></Footer>
             </BrowserRouter>
-             <footer className="contacts">
-                <Row>
-                    <Col md={12}>
-                        © 2021 Boutique Belsito Tutti i diritti riservati 
-                        <br></br>
-                        Via Dell'urbanistica 6, 76011 Bisceglie (BAT), Puglia  P.IVA 07492280727
-                        <br></br>
-                        <a className="personalTag" href="https://www.instagram.com/sergio05rule/">Developed by @sergio05rule</a>
-                    </Col>
-                </Row>
-            </footer>
-
         </React.Fragment>
         );
     }

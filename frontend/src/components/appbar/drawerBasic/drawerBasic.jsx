@@ -51,7 +51,7 @@ const DrawerBasic = (props) => {
       
       {userInfo ? (
         <>
-		<h2 className="text-center">Ciao <br></br>{userInfo.name}</h2>
+		<h2 className="text-center">Ciao {userInfo.name}</h2>
 		<Divider light={true} />
 		<ListItem button component={Link} to={`/profile`}>
 		  <ListItemText className="listItem">Modifica il tuo profilo</ListItemText>

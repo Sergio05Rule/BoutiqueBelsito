@@ -115,8 +115,6 @@ header a {
 }
 */
 
-
-
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -354,5 +352,3 @@ img.large {
   text-align: center;
   padding: 1rem;  
 }
-
-

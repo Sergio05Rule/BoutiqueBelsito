@@ -105,9 +105,5 @@ a.brand {
 	src: url(../../BilboSwashCaps-Regular.ttf);
   }
   
-  @font-face{
-	font-family: personalTagFont;
-	src: url(../../Roboto-Thin.ttf);
-  }
-  
+ 
 
