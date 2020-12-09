@@ -6,12 +6,13 @@ import {
 	Toolbar,
 	Button,
 	Tooltip,
-	Icon
+	Icon,
+	Badge
 } from '@material-ui/core';
 import DrawerBasic from "./drawerBasic/drawerBasic";
+import { IconContext } from "react-icons";
 import { FiMenu } from "react-icons/fi";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import {Row, Col, Dropdown, Container} from "react-bootstrap/";
 import { Link, Route } from 'react-router-dom';
 import SearchBox from './SearchBox';
 import { signout } from '../../actions/userActions';
@@ -37,84 +38,46 @@ const Aside = props => {
 	};
 
 	return (
-		<AppBar id="appbarTodo" position="fixed">
-			<Row>
-				<Col md={4} >
-					<Toolbar>
-						<IconButton
-							color="inherit"
-							onClick={handleDrawerOpen}
-						>
-							<FiMenu />
-						</IconButton>
-						<Link className="brand" to="/">Boutique Belsito</Link>
-					</Toolbar>
-					<DrawerBasic
-					openSidebar={openSidebar}
-					onCloseDrawer={handleDrawerClose}
-					/>
+		<AppBar id="appbar" position="fixed">
+			<Row>	
+				<Col md={3}>
 				</Col>
-				
-				<Col md={4} >
+				<Col md={6}>
+					<Row className="justify-content-start">
+					<Col md={3} >
+					<Link className="brand" to="/">Boutique Belsito</Link>
+					</Col>
+					<Col >
 					<Route
 					render={({ history }) => (
 						<SearchBox history={history}></SearchBox>
 					)}
 					></Route>
+					</Col>
+					</Row>
 				</Col>
 
-				<Col md={4} >
-					<div className="text-right">
-					<Link to="/cart" >
-								<i className="fa fa-shopping-cart" style={{'fontSize' : '3rem'}}></i>
-								{cartItems.length > 0 && (
-									<span className="badge">{cartItems.length}</span>
-							)}
-					</Link>
-					{userInfo ? (
-									<div className="dropdown ml-4 mr-4">
-										<Link to="#" >
-											{userInfo.name} <i className="fa fa-caret-down"></i>{' '}
-										</Link>
-										<ul className="dropdown-content">
-											<li>
-											<Link to="/profile">User Profile</Link>
-											</li>
-											<li>
-												<Link to="/orderhistory">Order History</Link>
-											</li>
-											<li>
-											<Link to="#signout" onClick={signoutHandler} >
-												SignOut
-											</Link>
-											</li>
-										</ul>
-									</div>
-								) : (
-										<Link className="ml-4 mr-4" to="/signin">Sign In</Link>
-								)}
-								{userInfo && userInfo.isAdmin && (
-									<div className="dropdown">
-										<Link to="#admin">
-										Admin <i className="fa fa-caret-down"></i>
-										</Link>
-										<ul className="dropdown-content">
-										<li>
-											<Link to="/dashboard">Dashboard</Link>
-										</li>
-										<li>
-											<Link to="/productlist">Products</Link>
-										</li>
-										<li>
-											<Link to="/orderlist">Orders</Link>
-										</li>
-										<li>
-											<Link to="/userlist">Users</Link>
-										</li>
-										</ul>
-									</div>
-								)}
-						</div>
+				<Col className="navigation" md={3}>
+					<Row>
+						<Toolbar>
+						<Link className="fa-shopping-cart" to="/cart" >
+							<Badge badgeContent={cartItems.length} color="secondary"  id="badge">
+									<i className="fa fa-shopping-cart"  style={{'fontSize' : '3.5rem'}}></i>
+							</Badge>
+						</Link>
+						<IconContext.Provider
+      							value={{ color: 'white', size: '20px' }}>
+								  <FiMenu
+								  className="ml-4"
+								onClick={handleDrawerOpen}/>
+    					</IconContext.Provider>
+						</Toolbar> 
+						<DrawerBasic
+						className="mr-2"
+						openSidebar={openSidebar}
+						onCloseDrawer={handleDrawerClose}
+						/>
+					</Row>
 				</Col>
 			</Row>
 		</AppBar>

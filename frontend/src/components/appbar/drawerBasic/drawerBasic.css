@@ -1,19 +1,53 @@
 /* DRAWER */
-.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiPaper-elevation16 {
-	background-color: #20304091;
-	color: rgba(245, 245, 245, 0.829);
+.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorRight.MuiPaper-elevation16 {
+	background-color: #203040;
+	color: white;
+	width: 30%;
 }
 /* DRAWER DIVIDER */
 .MuiDivider-root.MuiDivider-light {
-	background-color: rgba(255, 255, 255, 0.747);
+	background-color: white;
 }
 /* DRAWER BACK BUTTON */
 #buttonChevron {
-	float: right;
-	color: rgba(245, 245, 245, 0.829);
+	float: left;
+	color: white;
 }
 
 div.MuiListItemIcon-root svg path {
-	color: white;
+	color:purple;
     margin-left: 1rem;
+}
+
+a {
+	color:white;
+	font-size: 2.5rem;
+	font-family: brandFont;
+	text-decoration: none;
+	justify-content: end;
+  
+  }
+  a:link {
+	text-decoration: none;
+  }
+  
+  a:visited {
+	text-decoration: none;
+  }
+  
+  a:hover {
+	text-decoration: none;
+	color: red;
+  }
+  
+  a:active {
+	text-decoration: none;
+  }
+  a:focus {
+	text-decoration: none;
+  }
+
+.listItem{
+	text-align:center;
+	text-decoration: none;
 }

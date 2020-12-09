@@ -46,16 +46,14 @@ userRouter.post(
       const user = await User.findOne({ email: req.body.email });
       if (user) {
           const newPassword = Math.floor(100000 + Math.random() * 900000);
-          console.log(newPassword);
           user.password = bcrypt.hashSync(String(newPassword), 8);
           const updatedUser = await user.save();
           res.send({ updatedUser });
           sendForgotPasswordEmail(user, newPassword);
-
           return;
         }
         else{
-          res.status(401).send({ message: 'Password inserita non valida, non legata ad alcun account!' });
+          res.status(401).send({ message: 'Email inserita non valida, non legata ad alcun account!' });
         }
       }
       

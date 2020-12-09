@@ -1,12 +1,78 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster&display=swap%22");
 
-#appbarTodo {
+
+#appbar{
 	background-color: #203040;
+	justify-self: start;
+	align-self: flex-start;
 }
-#searchBar {
-	font-family: "Pridi", cursive;
-	font-size: 10px;
+
+
+/* Main title */
+a.brand {
+	color:white;
+	font-size: 2.5rem;
+	font-family: brandFont;
+	text-decoration: none;
+	justify-content: end;
+  
+  }
+  a.brand:link {
+	text-decoration: none;
+  }
+  
+  a.brand:visited {
+	text-decoration: none;
+  }
+  
+  a.brand:hover {
+	text-decoration: none;
+	color: white;
+  }
+  
+  a.brand:active {
+	text-decoration: none;
+  }
+  a.brand:focus {
+	text-decoration: none;
+  }
+
+/* Cart Column*/
+/* Large */
+.navigation {
+
+	/* This aligns items to the end line on main-axis */
+  }
+
+
+/* Cart */
+.fa-shopping-cart{
+		font-size: 3rem;
+		text-decoration: none;
+		color: white;
+		text-decoration: none;
+	}
+
+	.fa-shopping-cart:hover{
+		font-size: 3.5rem;
+		text-decoration: none;
+		color: white;
+		text-decoration: none;
+	}
+
+#badge{
 }
+
+
+/*
+.badge {
+	font-size: 3.5rem;
+	padding-top: 1rem;
+	padding-right: 3rem;
+	badge
+}
+*/
+
 /*
 .navbar-brand.mt-3 {
 	margin: 1.3rem;
@@ -18,7 +84,8 @@
 	color: white;
 }
 */
-/* NAVBAR INPUT */
+
+/* NAVBAR INPUT  
 #inputBar {
 	border-radius: 1rem;
 }
@@ -30,3 +97,17 @@
 	font-size: 13px;
 	margin-left: 0.8rem;
 }
+*/
+
+/* Personal fonts */
+@font-face{
+	font-family: brandFont;
+	src: url(../../BilboSwashCaps-Regular.ttf);
+  }
+  
+  @font-face{
+	font-family: personalTagFont;
+	src: url(../../Roboto-Thin.ttf);
+  }
+  
+

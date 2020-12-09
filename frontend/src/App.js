@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
 import AdminRoute from './components/AdminRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -21,15 +21,14 @@ import SigninScreen from './screens/SigninScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
-import SearchBox from './components/appbar/SearchBox';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
-import LoadingBox from './components/LoadingBox';
-import MessageBox from './components/MessageBox';
 import AppBar from './components/appbar/appbar';
 import './components/appbar/appbar.css';
 import './components/appbar/drawerBasic/drawerBasic.css';
 import './components/appbar/SearchBox.css';
+import './App.css'
+import {Row,Col} from "react-bootstrap";
 
 
 function App() {
@@ -55,9 +54,11 @@ function App() {
         dispatch(listProductCategories());
   }, [dispatch]);
   return (
+      <React.Fragment>
         <BrowserRouter>
-            <AppBar></AppBar>
-            <main>
+            <AppBar>
+            </AppBar>
+            <body>
                 <Route path="/cart/:id?" component={CartScreen}></Route>
                 <Route path="/product/:id" component={ProductScreen} exact></Route>
                 <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
@@ -79,15 +80,22 @@ function App() {
                 <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
                 <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
                 <Route path="/" component={HomeScreen} exact></Route>
-            </main>
-            <footer className="contacts">
-                © 2021 Boutique Belsito Tutti i diritti riservati 
-                <br></br>
-                Via Dell'urbanistica 6, 76011 Bisceglie (BAT), Puglia  P.IVA 07492280727
-                <br></br>
-                <a className="personalTag" href="https://www.instagram.com/sergio05rule/">Developed by @sergio05rule</a>
-            </footer>
+            </body>
+           
             </BrowserRouter>
+             <footer className="contacts">
+                <Row>
+                    <Col md={12}>
+                        © 2021 Boutique Belsito Tutti i diritti riservati 
+                        <br></br>
+                        Via Dell'urbanistica 6, 76011 Bisceglie (BAT), Puglia  P.IVA 07492280727
+                        <br></br>
+                        <a className="personalTag" href="https://www.instagram.com/sergio05rule/">Developed by @sergio05rule</a>
+                    </Col>
+                </Row>
+            </footer>
+
+        </React.Fragment>
         );
     }
 
