@@ -43,6 +43,7 @@ var params = {
     CcAddresses: [
       //'EMAIL_ADDRESS',
       /* more items */
+      "boutiquebelsitoshop@gmail.com",
     ],
     ToAddresses: [
         emailReciver,

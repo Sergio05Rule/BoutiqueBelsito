@@ -1,6 +1,7 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
-import Order from '../models/orderModel.js';
+import  Order from '../models/orderModel.js';
+import  Product from '../models/productModel.js';
 import { isAdmin, isAuth } from '../utils.js';
 import sendCreateOrderEmail from '../AWS_SES/ses_send_create_order_email.js';
 import sendPayedOrderEmail from '../AWS_SES/ses_send_payed_order_email.js';
@@ -47,13 +48,57 @@ orderRouter.post(
       const username = req.user.name;
       const email = req.user.email;
 
+       // check if hte trasaction is permitted
+       var transaction_premitted = true;
+       for (var i = 0; i < order.orderItems.length; i++)
+       {
+         const product_buyed = order.orderItems[i];
+         const product_stock = await Product.findById(product_buyed.product);
+         var obj = product_stock.sizeStockCount[0].toObject();
+           for (var prop in obj) {
+             if(prop === product_buyed.size)
+             {
+               // check if the oredered qty > stock_qty
+               if (obj[prop] < product_buyed.qty)
+               {
+                 console.log("ANNULLO TUTTO1");
+                 transaction_premitted = false;
+               }
+             }
+         }
+       }
+
+       if(transaction_premitted)
+       {
+         for (var i = 0; i < order.orderItems.length; i++)
+         {
+           const product_buyed = order.orderItems[i];
+           const product_stock = await Product.findById(product_buyed.product);
+           var obj = product_stock.sizeStockCount[0].toObject();
+             for (var prop in obj) {
+               if(prop === product_buyed.size)
+               {
+                 // update the count stock qty, of the size, of the buyed product
+                 obj[prop] = obj[prop] - product_buyed.qty;
+               }
+           }
+           product_stock.sizeStockCount[0] = obj
+
+           const updatedProduct = await product_stock.save(); //uodate the stock product
+         }
+       }
+       else{
+             res.status(404).send({ message: `Prodotto attualmente non disponibile nella quantità selezionata, perfavore effettuare un nuovo ordine o contattare l'ammistrazione per verificare la disponibilità della quantità` });
+             return;
+       }
+
       const createdOrder = await order.save();
       res
         .status(201)
         .send({ message: 'Ordine creato con successo', order: createdOrder });
       
       //Sending email for createing an order
-      sendCreateOrderEmail(username, email, order);
+      sendCreateOrderEmail(email, username, order);
       }
   })
 );
@@ -85,14 +130,15 @@ orderRouter.get(
           update_time: req.body.update_time,
           email_address: req.body.email_address,
         };
-        const username = req.user.name;
+        const username = req.user.name; 
         const email = req.user.email;
-
+        
+        // Aggiorno ordine pagato
         const updatedOrder = await order.save();
         res.send({ message: 'Ordine pagato', order: updatedOrder });
+        
+        sendPayedOrderEmail(email, username , order);
 
-        //Sending email for createing an order
-        sendPayedOrderEmail(username, email, order);
       } else {
         res.status(404).send({ message: 'Ordine non trovato' });
       }
@@ -130,7 +176,7 @@ orderRouter.put(
         res.send({ message: 'Ordine spedito', order: updatedOrder });
         
         //Sending email for createing an order
-        sendDeliveredOrderEmail(username, email, order);
+        sendDeliveredOrderEmail(email, username, order);
         
       } else {
         res.status(404).send({ message: 'Ordine non trovato' });

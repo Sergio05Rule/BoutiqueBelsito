@@ -68,6 +68,7 @@ const Aside = props => {
 						<IconContext.Provider
       							value={{ color: 'white', size: '20px' }}>
 								  <FiMenu
+								  id="sidebar"
 								  className="ml-4"
 								onClick={handleDrawerOpen}/>
     					</IconContext.Provider>
