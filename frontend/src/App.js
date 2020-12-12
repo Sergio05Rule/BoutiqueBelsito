@@ -5,7 +5,7 @@ import { signout } from './actions/userActions';
 import AdminRoute from './components/AdminRoute';
 import PrivateRoute from './components/PrivateRoute';
 import CartScreen from './screens/CartScreen';
-import HomeScreen from './screens/HomeScreen';
+import HomeScreen from './screens/HomeScreen.jsx';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import OrderScreen from './screens/OrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
@@ -57,9 +57,8 @@ function App() {
   return (
       <React.Fragment>
         <BrowserRouter>
-            <AppBar>
-            </AppBar>
-            <body>
+            <AppBar></AppBar>
+            <body id="appJsBody">
                 <Route path="/cart/:id?" component={CartScreen}></Route>
                 <Route path="/product/:id" component={ProductScreen} exact></Route>
                 <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
@@ -83,7 +82,7 @@ function App() {
                 <Route path="/" component={HomeScreen} exact></Route>
             </body>
             <Footer></Footer>
-            </BrowserRouter>
+        </BrowserRouter>
         </React.Fragment>
         );
     }

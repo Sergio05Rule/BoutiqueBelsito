@@ -15,7 +15,6 @@ a.brand {
 	font-family: brandFont;
 	text-decoration: none;
 	justify-content: end;
-  
   }
   a.brand:link {
 	text-decoration: none;
@@ -46,18 +45,17 @@ a.brand {
 
 
 /* Cart */
-.fa-shopping-cart{
-		font-size: 3rem;
+.cart{
+		font-size: 30px;
 		text-decoration: none;
 		color: white;
 		text-decoration: none;
+		margin-bottom: 2rem;
 	}
 
-	.fa-shopping-cart:hover{
-		font-size: 3.5rem;
+	.cart:hover{
 		text-decoration: none;
-		color: white;
-		text-decoration: none;
+		color:white;
 	}
 
 #sidebar{

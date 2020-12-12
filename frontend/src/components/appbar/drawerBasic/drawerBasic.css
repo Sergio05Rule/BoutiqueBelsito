@@ -2,7 +2,7 @@
 .MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorRight.MuiPaper-elevation16 {
 	background-color: #203040;
 	color: white;
-	width: 30%;
+	width: 40%;
 }
 /* DRAWER DIVIDER */
 .MuiDivider-root.MuiDivider-light {
@@ -19,31 +19,30 @@ div.MuiListItemIcon-root svg path {
     margin-left: 1rem;
 }
 
-a {
+a.listItem {
 	color:white;
 	font-size: 2.5rem;
-	font-family: brandFont;
 	text-decoration: none;
 	justify-content: end;
   
   }
-  a:link {
+  a.listItem:link {
 	text-decoration: none;
   }
   
-  a:visited {
+  a.listItem:visited {
 	text-decoration: none;
   }
   
-  a:hover {
+  a.listItem:hover {
 	text-decoration: none;
 	color: red;
   }
   
-  a:active {
+  a.listItem:active {
 	text-decoration: none;
   }
-  a:focus {
+  a.listItem:focus {
 	text-decoration: none;
   }
 

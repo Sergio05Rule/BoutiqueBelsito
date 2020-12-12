@@ -71,7 +71,6 @@ export default function SearchBox(props) {
             onSubmit={submitHandler}
             className={classes.margin} 
             id="search" 
-            size="small" 
             label="Cerca" 
             variant="outlined" 
             InputLabelProps={{

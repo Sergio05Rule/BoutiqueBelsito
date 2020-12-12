@@ -45,14 +45,19 @@ const Aside = props => {
 				<Col md={6}>
 					<Row className="justify-content-start">
 					<Col md={3} >
+					<div className="mt-3">
 					<Link className="brand" to="/">Boutique Belsito</Link>
+					</div>
 					</Col>
-					<Col >
+					
+					<Col md={9}>
+					<div className="mt-1">
 					<Route
 					render={({ history }) => (
 						<SearchBox history={history}></SearchBox>
 					)}
 					></Route>
+					</div>
 					</Col>
 					</Row>
 				</Col>
@@ -60,16 +65,16 @@ const Aside = props => {
 				<Col className="navigation" md={3}>
 					<Row>
 						<Toolbar>
-						<Link className="fa-shopping-cart" to="/cart" >
+						<Link className="cart" to="/cart" >
 							<Badge badgeContent={cartItems.length} color="secondary"  id="badge">
-									<i className="fa fa-shopping-cart"  style={{'fontSize' : '3.5rem'}}></i>
+									<i className="fa fa-shopping-cart"></i>
 							</Badge>
 						</Link>
 						<IconContext.Provider
       							value={{ color: 'white', size: '20px' }}>
 								  <FiMenu
 								  id="sidebar"
-								  className="ml-4"
+								  className="ml-4 mb-3"
 								onClick={handleDrawerOpen}/>
     					</IconContext.Provider>
 						</Toolbar> 

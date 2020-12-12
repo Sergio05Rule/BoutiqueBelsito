@@ -15,6 +15,13 @@ import { FiMenu, FiFacebook, FiInstagram } from "react-icons/fi";
 import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
 import { Link, Route } from "react-router-dom";
 import "./footer.css";
+import BiographyScreen from '../../screens/BiographyScreen';
+import DetailsScreen from '../../screens/DetailsScreen';
+import PaymentInfoScreen from '../../screens/PaymentInfoScreen';
+import ShippmentInfoScreen from '../../screens/ShippmentInfoScreen';
+import PrivacyScreen from '../../screens/PrivacyScreen';
+import CookieScreen from '../../screens/CookieScreen';
+
 
 
 const Aside = (props) => {
@@ -26,35 +33,29 @@ const Aside = (props) => {
   const dispatch = useDispatch();
 
   return (
-    <footer className="footer">
-
-
-<hr class="border-color-wvjs-color separator-no-padding" />
-
+<footer className="bottom">
 <Row className="contacts">
-        <Col md={4} className="col_text">
-        CHI SIAMO
-        <Button component={Link} to={"/"} id="button_footer" size="sm" >Biografia</Button>
-        <Button component={Link} to={"/"} id="button_footer" size="sm" >Eleganza & Qualità</Button>
+        <Col md={4} >
+          <Col className="col_text" md={12}>CHI SIAMO</Col>
+          <Col md={12}>        
+            <Button component={BiographyScreen} to={"/"} id="button_footer" size="sm" >Biografia</Button>
+          </Col>
+          <Col md={12}><Button component={DetailsScreen} to={"/"} id="button_footer" size="sm" >Eleganza & Qualità</Button>
+          </Col>
         </Col>
 
         <Col md={4} className="col_text">
-        CONDIZIONI DI ACQUISTO
-        <Button component={Link} to={"/"} id="button_footer" size="sm" >Pagamenti</Button>
-        <Button component={Link} to={"/"} id="button_footer" size="sm" >Spedizioni & resi</Button>
+          <Col md={12}className="col_text" >CONDIZIONI DI ACQUISTO</Col>
+          <Col md={12} ><Button component={PaymentInfoScreen} to={"/"} id="button_footer" size="sm" >Pagamenti</Button></Col>
+          <Col md={12} ><Button component={ShippmentInfoScreen} to={"/"} id="button_footer" size="sm" >Spedizioni & resi</Button></Col>
         </Col>
 
         <Col md={4} className="col_text">
-        RESPONSABILITA'
-        <Button component={Link} to={"/"} id="button_footer" size="sm" >Privacy</Button>
-        <Button component={Link} to={"/"} id="button_footer" size="sm" >Cookie policy</Button>
+        <Col md={12} className="col_text" >RESPONSABILITA'</Col>
+        <Col md={12}><Button component={PrivacyScreen} to={"/"} id="button_footer" size="sm" >Privacy</Button></Col>
+        <Col md={12}><Button component={CookieScreen} to={"/"} id="button_footer" size="sm" >Cookie policy</Button></Col>
         </Col>
 </Row>
-
-
-<hr />  
-
-
     <Row className="contacts">
         <Col md={4} className="col_text">
         METODI DI PAGAMENTO
