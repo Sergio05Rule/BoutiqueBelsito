@@ -30,6 +30,13 @@ import './components/appbar/drawerBasic/drawerBasic.css';
 import './components/appbar/SearchBox.css';
 import './App.css'
 import {Row,Col} from "react-bootstrap";
+import BiographyScreen from './screens/BiographyScreen';
+import DetailsScreen from './screens/DetailsScreen';
+import PaymentInfoScreen from './screens/PaymentInfoScreen';
+import ShippmentInfoScreen from './screens/ShippmentInfoScreen';
+import PrivacyScreen from './screens/PrivacyScreen';
+import CookieScreen from './screens/CookieScreen';
+
 
 
 function App() {
@@ -74,6 +81,12 @@ function App() {
                 <Route path="/search/category/:category" component={SearchScreen} exact></Route>
                 <Route path="/search/category/:category/name/:name" component={SearchScreen} exact></Route>
                 <Route path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order" component={SearchScreen} exact ></Route>
+                <Route path="/BiographyScreen" component={BiographyScreen}></Route>
+                <Route path="/DetailsScreen" component={DetailsScreen}></Route>
+                <Route path="/PaymentInfoScreen" component={PaymentInfoScreen}></Route>
+                <Route path="/ShippmentInfoScreen" component={ShippmentInfoScreen}></Route>
+                <Route path="/PrivacyScreen" component={PrivacyScreen}></Route>
+                <Route path="/CookieScreen" component={CookieScreen}></Route>
                 <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
                 <AdminRoute path="/productlist" component={ProductListScreen}></AdminRoute>
                 <AdminRoute path="/orderlist" component={OrderListScreen}></AdminRoute>

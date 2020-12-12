@@ -1,16 +1,15 @@
-
 html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   /*box-sizing: border-box;*/
 }
 
-#test{
+#test {
   width: 400px;
   height: 400px;
 }
 
 /* Product.js */
-#product_card{
+#product_card {
   height: 280px;
   width: 350px;
   margin-bottom: 1rem;
@@ -18,66 +17,76 @@ html {
 }
 
 a.card {
-	text-decoration: none;
+  text-decoration: none;
   justify-content: end;
-  }
-  a.card:link {
-	text-decoration: none;
-  }
-  
-  a.card:visited {
-	text-decoration: none;
-  }
-  
-  a.card:hover {
-	text-decoration: none;
-  }
-  
-  a.card:active {
-	text-decoration: none;
-  }
-  a.card:focus {
-	text-decoration: none;
-  }
+}
+a.card:link {
+  text-decoration: none;
+}
 
-.price{
+a.card:visited {
+  text-decoration: none;
+}
+
+a.card:hover {
+  text-decoration: none;
+}
+
+a.card:active {
+  text-decoration: none;
+}
+a.card:focus {
+  text-decoration: none;
+}
+
+.price {
   font-size: 2.5rem;
 }
 /* FINE Product.js */
 
 /* ProductScreen.js */
-#product_image{
+#product_image {
   width: 100%;
   height: 100%;
 }
 
-
-#price_product{
+#price_product {
   font-size: 3rem;
 }
 
-#select_review{
-  color:gold;
+#select_review {
+  color: gold;
   width: 80%;
 }
 
-#select_rating{
+#select_rating {
   width: 100%;
 }
 
-#insert_review{
+#insert_review {
   width: 200%;
 }
 
-#send_review_button{
+#send_review_button {
   width: 80%;
 }
 /* FINE ProductScreen.js */
 
+/*  ProvacyScreen.js */
+#par {
+  font-size: 3rem;
+}
 
+#par_min{
+  font-size: 1.5rem;
+}
+
+#par_max{
+  font-size:6rem;
+}
+/* FINE ProvacyScreen.js */
 
 body {
-
   /*
   margin: 0;
   height: 100vh;
@@ -88,7 +97,6 @@ body {
   */
 }
 #root {
-
 }
 /* Layout */
 .grid-container {
@@ -218,7 +226,6 @@ header a {
 }
 */
 
-
 /* Aside 
 aside {
   position: fixed;
@@ -282,8 +289,8 @@ img.large {
   color: #404040;
 }
 /* Alert */
-.loading{
-  display: block!important;
+.loading {
+  display: block !important;
 }
 .success {
   color: #20a020;
@@ -394,15 +401,15 @@ img.large {
 */
 
 /* My Tags */
-.personalTag{
+.personalTag {
   color: white;
   font-family: personalTagFont;
   font-size: 1.4rem;
   line-height: 2rem;
 }
 
-.contacts{
+.contacts {
   font-size: 0.8rem;
   text-align: center;
-  padding: 1rem;  
+  padding: 1rem;
 }
