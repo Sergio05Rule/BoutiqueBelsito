@@ -21,7 +21,6 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
-import AddToCartStepper from "../components/AddToCartStepper";
 import { GoVerified } from "react-icons/go";
 import { FaTimes } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -156,7 +155,7 @@ export default function ProductScreen(props) {
   }, [dispatch, productId, successReviewCreate]);
 
   const addToCartHandler = () => {
-    props.history.push(`/cart/${productId}?qty=${qty}?size=${size}`);
+    props.history.push(`/cart/${productId}?qty=${qty}&size=${size}`);
   };
 
   //@ the product loading
