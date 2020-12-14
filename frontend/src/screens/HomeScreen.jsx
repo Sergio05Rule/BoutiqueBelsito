@@ -34,6 +34,7 @@ export default function HomeScreen() {
   //Render section of the components
   return (
     <React.Fragment>
+      <Container>
         <hr></hr>
         <SlideShow></SlideShow>
         <hr></hr>
@@ -59,8 +60,9 @@ export default function HomeScreen() {
       >
         Questo sito utilizza cookie per migliorare la tua esperienza di
         utilizzo. Per saperne di più leggi la nostra informativa.{" "}
-        <Link to="/">Cookie Policy</Link>
+        <Link to="/CookieScreen">Cookie Policy</Link>
       </CookieConsent>
+      </Container>
     </React.Fragment>
   );
 }

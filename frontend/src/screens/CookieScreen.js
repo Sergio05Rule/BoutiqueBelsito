@@ -22,6 +22,7 @@ export default function CookieScreen(props) {
 
   //Render section of the components
   return (
+    <Container>
     <Row className="mt-5">
       <Col md={12}>
         <div id="par">
@@ -508,5 +509,6 @@ export default function CookieScreen(props) {
         </div>
       </Col>
     </Row>
+        </Container>
   );
 }

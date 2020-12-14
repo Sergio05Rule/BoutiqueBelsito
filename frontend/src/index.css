@@ -39,12 +39,33 @@ a.card:focus {
   text-decoration: none;
 }
 
+
+button.primary {
+  background-color: #f0c040;
+}
+
+button.block {
+  width: 100%;
+}
+button.small {
+  font-size: 1.2rem;
+}
+
 .price {
   font-size: 2.5rem;
 }
 /* FINE Product.js */
 
 /* ProductScreen.js */
+#back_to_result{
+  text-decoration: none;
+  color:black;
+}
+#back_to_result:hover{
+  text-decoration: none;
+  color:black;
+}
+
 #product_image {
   width: 100%;
   height: 100%;
@@ -70,9 +91,28 @@ a.card:focus {
 #send_review_button {
   width: 80%;
 }
+
+#state_icon_available{
+  color: green;
+  font-size: 4rem;
+}
+
+#card_label{
+  font-size: 10px;
+}
+
+#cart_icon{
+  font-size: 3rem;
+
+}
+
+#state_icon_unavailable{
+  color: red;
+  font-size: 4rem;
+}
 /* FINE ProductScreen.js */
 
-/*  ProvacyScreen.js */
+/*  PrivacyScreen.js */
 #par {
   font-size: 3rem;
 }
@@ -84,7 +124,7 @@ a.card:focus {
 #par_max{
   font-size:6rem;
 }
-/* FINE ProvacyScreen.js */
+/* FINE PrivacyScreen.js */
 
 body {
   /*
@@ -174,15 +214,7 @@ button {
 }
 */
 
-button.primary {
-  background-color: #f0c040;
-}
-button.block {
-  width: 100%;
-}
-button.small {
-  font-size: 1.2rem;
-}
+
 
 /* Header 
 header a {

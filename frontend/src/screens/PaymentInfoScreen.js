@@ -17,8 +17,10 @@ export default function PaymentInfoScreen(props) {
 
   //Render section of the components
   return (
+    <Container>
       <Row>
       <Col md={6}>
+      <div id="par_max">Pagamenti</div>
       <div id="par">Informazioni generali</div>
       <br></br>
         <div >Tempi di consegna e condizioni di reso
@@ -34,5 +36,6 @@ export default function PaymentInfoScreen(props) {
       </Col>
       
       </Row>
+      </Container>
   );
 }

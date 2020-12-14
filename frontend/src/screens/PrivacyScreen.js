@@ -22,7 +22,8 @@ export default function PrivacyScreen(props) {
 
   //Render section of the components
   return (
-    <Row className="mt-5">
+    <Container>   
+       <Row className="mt-5">
       <Col md={12}>
         <div id="par">
           <b>Informazioni Generali</b>
@@ -374,5 +375,7 @@ export default function PrivacyScreen(props) {
         </div>
       </Col>
     </Row>
+    </Container>
+
   );
 }

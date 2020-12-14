@@ -16,6 +16,7 @@ export default function ShipmentInfoScreen(props) {
 
   //Render section of the components
   return (
+    <Container>
     <Row>
       <Col md={6}>
         <div id="par_max">Spedizioni & Resi</div>
@@ -57,5 +58,6 @@ export default function ShipmentInfoScreen(props) {
         </div>
       </Col>
     </Row>
+    </Container>
   );
 }

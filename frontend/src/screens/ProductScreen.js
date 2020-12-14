@@ -20,7 +20,13 @@ import Select from "@material-ui/core/Select";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import SaveIcon from '@material-ui/icons/Save';
+import SaveIcon from "@material-ui/icons/Save";
+import AddToCartStepper from "../components/AddToCartStepper";
+import { GoVerified } from "react-icons/go";
+import { FaTimes } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
+
 
 const CssTextField = withStyles({
   root: {
@@ -74,6 +80,32 @@ const CssFormControl = withStyles({
   },
 })(FormControl);
 
+const CssFormControl_buy = withStyles({
+  root: {
+    "& .MuiInputBase-root": {
+      color: "black",
+    },
+
+    "& label.Mui-focused": {
+      color: "black",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "black",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "black",
+      },
+      "&:hover fieldset": {
+        borderColor: "black",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "black",
+      },
+    },
+  },
+})(FormControl);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -96,7 +128,7 @@ export default function ProductScreen(props) {
   const dispatch = useDispatch();
   const productId = props.match.params.id;
   const [qty, setQty] = useState(0);
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState("Default");
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const userSignin = useSelector((state) => state.userSignin);
@@ -126,6 +158,61 @@ export default function ProductScreen(props) {
   const addToCartHandler = () => {
     props.history.push(`/cart/${productId}?qty=${qty}?size=${size}`);
   };
+
+  //@ the product loading
+  const sizeInStock = [];
+  const valueInStock = [];
+  var isProductInStock_flag = false;
+  if (product) {
+    var obj = product.sizeStockCount[0];
+    for (var prop in obj) {
+      if (
+        prop === "S" ||
+        prop === "M" ||
+        prop === "L" ||
+        prop === "XL" ||
+        prop === "XXL" ||
+        prop === "XXXL"
+      ) {
+        // check if the oredered qty > stock_qty
+        if (obj[prop] > 0) {
+          isProductInStock_flag = true;
+          sizeInStock.push(prop);
+          valueInStock.push(obj[prop]);
+        }
+      }
+    }
+  }
+
+  const populateSelectSize = () => {
+    let options = [];
+    for (var i = 0; i < sizeInStock.length; i++) {
+      options.push(
+        <option key={sizeInStock[i]} value={sizeInStock[i]}>
+          {sizeInStock[i]}
+        </option>
+      );
+    }
+    return options;
+  };
+
+  const populateSelectQty = (size) => {
+    let options = [];
+    for (var i = 0; i < sizeInStock.length; i++) {
+      if (sizeInStock[i] === size) {
+        for (var j = 0; j < valueInStock[i]; j++) {
+          var value = j + 1;
+          options.push(
+            <option key={value} value={value}>
+              {value}
+            </option>
+          );
+        }
+      }
+    }
+    return options;
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -152,14 +239,16 @@ export default function ProductScreen(props) {
     }
   };
   return (
-    <div>
+    <Container>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div>
-          <Link to="/">Torna ai risultati</Link>
+          <Button id="back_to_result" component={Link} to="/" variant="contained" >
+  Torna ai risultati
+</Button>
           <hr />
           <Row>
             <Col md={6}>
@@ -178,7 +267,7 @@ export default function ProductScreen(props) {
                   <Typography variant="h2" component="h2">
                     {product.name}
                   </Typography>
-
+                  <hr />
                   <Typography gutterBottom variant="h5" component="h2">
                     Descrizione:<p>{product.description}</p>
                   </Typography>
@@ -193,238 +282,99 @@ export default function ProductScreen(props) {
                   >
                     <b>{product.price}€</b>
                   </Typography>
+
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Stato:
+                    </Typography>
+
+                    {isProductInStock_flag ? (
+                      <Row className="mt-2">
+                        <Col md={3}>
+                          <Col md={12}>
+                          <GoVerified
+                          id = "state_icon_available"
+                          ></GoVerified>
+                          </Col>
+                          <Col md={12}>
+                          <span className="success">In Stock</span>
+                          </Col>
+                        </Col>
+                        <Col md={3}>
+                          <CssFormControl_buy
+                            variant="outlined"
+                          >
+                            <InputLabel
+                              htmlFor="outlined-age-native-simple"
+                            >
+                              Taglia
+                            </InputLabel>
+                            <Select
+                              native
+                              value={size}
+                              onChange={(e) => setSize(e.target.value)}
+                              defaultValue="Default"
+                            >
+                              <option value="Default" >
+Taglia                              </option>
+                              {populateSelectSize()}
+                            </Select>
+                          </CssFormControl_buy>
+                        </Col>
+
+                        {size !== "Default" && (
+                          <Col md={3}>
+                            <CssFormControl_buy
+                            variant="outlined"
+                          >
+                            <InputLabel
+                            >
+                              Quantità
+                            </InputLabel>
+                            <Select
+                              native
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                              defaultValue="Default"
+                              inputProps={{
+                                name: "Default",
+                                id: "outlined-age-native-simple",
+                              }}
+                            >
+                              <option value="Default" >
+                                Quantità
+                              </option>
+                              {populateSelectQty(size)}
+                            </Select>
+                          </CssFormControl_buy>
+
+                          </Col>
+                        )}
+
+                        {size !== "Default" && qty > 0 && (
+                          <Col md={3}>
+                            <Button
+                              onClick={addToCartHandler}
+                              className="primary block"
+                              size="large"
+                            >
+                            <label id="cart_label">Aggiungi al carrello</label><AiOutlineShoppingCart id="cart_icon"></AiOutlineShoppingCart>
+                          </Button>
+                          </Col>
+                        )}
+                      </Row>
+                    ) : (
+                      <Typography gutterBottom variant="h5" component="h2">
+                      <span className="danger">Esaurito</span>
+                      </Typography>
+
+                    )}
+
                   <Rating
                     rating={product.rating}
                     numReviews={product.numReviews}
                   ></Rating>
                 </CardContent>
               </Card>
-
-              <Row className="mt-4">
-                <Col md={12}>
-                  <Card>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        Stato:{" "}
-                        {product.sizeStockCount.map((sizeCount) =>
-                          sizeCount.S > 0 ||
-                          sizeCount.M > 0 ||
-                          sizeCount.L > 0 ||
-                          sizeCount.XL > 0 ||
-                          sizeCount.XXL > 0 ||
-                          sizeCount.XXXL > 0 ? (
-                            <span className="success">In Stock</span>
-                          ) : (
-                            <span className="danger">Esaurito</span>
-                          )
-                        )}
-                      </Typography>
-                      {product.sizeStockCount.map(
-                        (sizeCount) =>
-                          (sizeCount.S > 0 ||
-                            sizeCount.M > 0 ||
-                            sizeCount.L > 0 ||
-                            sizeCount.XL > 0 ||
-                            sizeCount.XXL > 0 ||
-                            sizeCount.XXXL > 0) && (
-                            <>
-                              <li>
-                                <div className="row">
-                                  <label>Taglia</label>
-                                  <select
-                                    title="Scegli una opzione"
-                                    onChange={(e) => setSize(e.target.value)}
-                                    defaultValue="Default"
-                                  >
-                                    <option value="Default" disabled>
-                                      Seleziona una taglia
-                                    </option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="XXXL">XXXL</option>
-                                  </select>
-                                </div>
-                              </li>
-
-                              {size === "S" && (
-                                <>
-                                  <li>
-                                    <div className="row">
-                                      <div>Quantità</div>
-                                      <div>
-                                        <select
-                                          value={qty}
-                                          onChange={(e) =>
-                                            setQty(e.target.value)
-                                          }
-                                        >
-                                          <option>0</option>
-                                          {[...Array(sizeCount.S).keys()].map(
-                                            (x) => (
-                                              <option key={x + 1} value={x + 1}>
-                                                {x + 1}
-                                              </option>
-                                            )
-                                          )}
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </>
-                              )}
-
-                              {size === "M" && (
-                                <>
-                                  <li>
-                                    <div className="row">
-                                      <div>Quantità</div>
-                                      <div>
-                                        <select
-                                          value={qty}
-                                          onChange={(e) =>
-                                            setQty(e.target.value)
-                                          }
-                                        >
-                                          <option>0</option>
-                                          {[...Array(sizeCount.M).keys()].map(
-                                            (x) => (
-                                              <option key={x + 1} value={x + 1}>
-                                                {x + 1}
-                                              </option>
-                                            )
-                                          )}
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </>
-                              )}
-                              {size === "L" && (
-                                <>
-                                  <li>
-                                    <div className="row">
-                                      <div>Quantità</div>
-                                      <div>
-                                        <select
-                                          value={qty}
-                                          onChange={(e) =>
-                                            setQty(e.target.value)
-                                          }
-                                        >
-                                          <option>0</option>
-                                          {[...Array(sizeCount.L).keys()].map(
-                                            (x) => (
-                                              <option key={x + 1} value={x + 1}>
-                                                {x + 1}
-                                              </option>
-                                            )
-                                          )}
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </>
-                              )}
-                              {size === "XL" && (
-                                <>
-                                  <li>
-                                    <div className="row">
-                                      <div>Quantità</div>
-                                      <div>
-                                        <select
-                                          value={qty}
-                                          onChange={(e) =>
-                                            setQty(e.target.value)
-                                          }
-                                        >
-                                          <option>0</option>
-                                          {[...Array(sizeCount.XL).keys()].map(
-                                            (x) => (
-                                              <option key={x + 1} value={x + 1}>
-                                                {x + 1}
-                                              </option>
-                                            )
-                                          )}
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </>
-                              )}
-                              {size === "XXL" && (
-                                <>
-                                  <li>
-                                    <div className="row">
-                                      <div>Quantità</div>
-                                      <div>
-                                        <select
-                                          value={qty}
-                                          onChange={(e) =>
-                                            setQty(e.target.value)
-                                          }
-                                        >
-                                          <option>0</option>
-                                          {[...Array(sizeCount.XXL).keys()].map(
-                                            (x) => (
-                                              <option key={x + 1} value={x + 1}>
-                                                {x + 1}
-                                              </option>
-                                            )
-                                          )}
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </>
-                              )}
-                              {size === "XXXL" && (
-                                <>
-                                  <li>
-                                    <div className="row">
-                                      <div>Quantità</div>
-                                      <div>
-                                        <select
-                                          value={qty}
-                                          onChange={(e) =>
-                                            setQty(e.target.value)
-                                          }
-                                        >
-                                          <option>0</option>
-                                          {[
-                                            ...Array(sizeCount.XXXL).keys(),
-                                          ].map((x) => (
-                                            <option key={x + 1} value={x + 1}>
-                                              {x + 1}
-                                            </option>
-                                          ))}
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </>
-                              )}
-                              {size !== "" && qty > 0 && (
-                                <>
-                                  <li>
-                                    <button
-                                      onClick={addToCartHandler}
-                                      className="primary block"
-                                    >
-                                      Aggiungi al carrello
-                                    </button>
-                                  </li>
-                                </>
-                              )}
-                            </>
-                          )
-                      )}
-                    </CardContent>
-                  </Card>
-                </Col>
-              </Row>
             </Col>
           </Row>
 
@@ -443,12 +393,20 @@ export default function ProductScreen(props) {
                     </Typography>
                   )}
                   {product.reviews.map((review) => (
-                    <Typography key={review._id} gutterBottom variant="h5" component="h2">
+                    <div>
+                      <hr />
+                      <Typography
+                        key={review._id}
+                        gutterBottom
+                        variant="h5"
+                        component="h2"
+                      >
                         <strong>{review.name}</strong>
                         <Rating rating={review.rating} caption=" "></Rating>
                         <p>{review.createdAt.substring(0, 10)}</p>
                         <p>{review.comment}</p>
-                    </Typography>
+                      </Typography>
+                    </div>
                   ))}
                 </CardContent>
               </Card>
@@ -457,7 +415,7 @@ export default function ProductScreen(props) {
             <Col md={3} className="mt-4">
               <Card>
                 {userInfo ? (
-                  <form className={classes.root} >
+                  <form className={classes.root}>
                     <CardContent>
                       <Typography variant="h8" component="h2">
                         Scrivi una recensione
@@ -468,7 +426,10 @@ export default function ProductScreen(props) {
                         id="select_review"
                         className={classes.formControl}
                       >
-                        <InputLabel htmlFor="outlined-age-native-simple" id="select_rating">
+                        <InputLabel
+                          htmlFor="outlined-age-native-simple"
+                          id="select_rating"
+                        >
                           Valutazione
                         </InputLabel>
                         <Select
@@ -543,6 +504,6 @@ export default function ProductScreen(props) {
           </Row>
         </div>
       )}
-    </div>
+    </Container>
   );
 }
