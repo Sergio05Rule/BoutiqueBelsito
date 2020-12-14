@@ -282,9 +282,7 @@ export default function ProductScreen(props) {
                     <b>{product.price}€</b>
                   </Typography>
 
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Stato:
-                    </Typography>
+          
 
                     {isProductInStock_flag ? (
                       <Row className="mt-2">
@@ -295,7 +293,7 @@ export default function ProductScreen(props) {
                           ></GoVerified>
                           </Col>
                           <Col md={12}>
-                          <span className="success">In Stock</span>
+                          <span className="success">Stato :In Stock</span>
                           </Col>
                         </Col>
                         <Col md={3}>
@@ -362,9 +360,11 @@ Taglia                              </option>
                         )}
                       </Row>
                     ) : (
+                      <Col md={4}>
                       <Typography gutterBottom variant="h5" component="h2">
-                      <span className="danger">Esaurito</span>
+                      <MessageBox variant="danger">Stato: Esaurito</MessageBox>
                       </Typography>
+                      </Col>
 
                     )}
 

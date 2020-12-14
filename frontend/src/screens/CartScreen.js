@@ -110,98 +110,114 @@ export default function CartScreen(props) {
 
   return (
     <Container>
-      <div className="">
-        <div className="">
-          <h1>Carrello: </h1>
-          {cartItems.length === 0 ? (
-            <MessageBox>
-              Il carello è vuoto.<Link to="/">Go Shopping!</Link>
-            </MessageBox>
-          ) : (
-            <ul>
-              {cartItems.map((item) => (
-                <li key={item.product}>
-                  <div className="">
-                    <div>
-                      <img src={item.image} alt={item.name} className=""></img>
-                    </div>
-                    <div className="">
-                      <Link to={`/product/${item.product}`}>{item.name}</Link>
-                    </div>
-
-                    <div>Taglia:{item.size}</div>
-
-                    <div>
-                      {size !== "Default" && (
-                        <Col md={3}>
-                          <CssFormControl_buy variant="outlined">
-                            <InputLabel>Quantità</InputLabel>
-                            <Select
-                              native
-                              value={item.qty}
-                              onChange={(e) =>
-                                dispatch(
-                                  addToCart(
-                                    item.product,
-                                    Number(e.target.value),
-                                    item.size
-                                  )
+      <Row>
+        <h1>Carrello: </h1>
+      </Row>
+      <Row>
+        <Col md={9}>
+          <Card>
+            <CardContent>
+              {cartItems.length === 0 ? (
+                <Row>
+                  <MessageBox>
+                    Il carello è vuoto.<Link to="/">Go Shopping!</Link>
+                  </MessageBox>
+                </Row>
+              ) : (
+                <>
+                  {cartItems.map((item) => (
+                    <Row className="mt-5">
+                      <Col md={2}>
+                        <img
+                          className="small"
+                          src={item.image}
+                          alt={item.name}
+                        ></img>
+                      </Col>
+                      <Col md={2}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                        </Typography>
+                      </Col>
+                      <Col md={2}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        Taglia: {item.size}</Typography>
+                      </Col>
+                      <Col md={2}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        <CssFormControl_buy size="small" variant="outlined">
+                          <InputLabel>Quantità</InputLabel>
+                          <Select
+                            native
+                            value={item.qty}
+                            onChange={(e) =>
+                              dispatch(
+                                addToCart(
+                                  item.product,
+                                  Number(e.target.value),
+                                  item.size
                                 )
-                              }
-                              inputProps={{
-                                name: "Default",
-                                id: "outlined-age-native-simple",
-                              }}
-                            >
-                              {populateSelectQty(
-                                item.sizeStockCount[0],
-                                item.size
-                              )}
-                            </Select>
-                          </CssFormControl_buy>
-                        </Col>
-                      )}
-                    </div>
+                              )
+                            }
+                            inputProps={{
+                              name: "Default",
+                              id: "outlined-age-native-simple",
+                            }}
+                          >
+                            {populateSelectQty(
+                              item.sizeStockCount[0],
+                              item.size
+                            )}
+                          </Select>
+                        </CssFormControl_buy>
+                        </Typography>
+                      </Col>
+                      <Col md={2}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {item.price}€</Typography>
+                      </Col>
+                      <Col md={2}>
+                    <Typography gutterBottom variant="h5" component="h2">
 
-                    <div>{item.price}€</div>
-                    <div>
-                      <button
-                        type="button"
-                        onClick={() => removeFromCartHandler(item.product)}
-                      >
-                        Rimuovi
-                      </button>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <div className="">
-          <div className="">
-            <ul>
-              <li>
-                <h2>
-                  Subtotale ({cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
-                  oggetto/i) :
-                  {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}€
-                </h2>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={checkoutHandler}
-                  className=""
-                  disabled={cartItems.length === 0}
-                >
-                  Procedi al Checkout
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+                        <Button
+                          type="button"
+                          color="secondary"
+                          variant="contained"
+                          onClick={() => removeFromCartHandler(item.product)}
+                        >
+                          Rimuovi
+                        </Button>
+                        </Typography>
+                      </Col>
+                    </Row>
+                  ))}
+                </>
+              )}
+            </CardContent>
+          </Card>
+        </Col>
+        <Col md={3}>
+            <Card>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+            Subtotale ({cartItems.reduce((a, c) => a + c.qty, 0)} oggetto/i) :
+            {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}€
+          </Typography>
+          <Typography gutterBottom variant="h5" component="h2">
+          <Button
+            type="button"
+            onClick={checkoutHandler}
+            color="primary"
+                          variant="contained"
+            disabled={cartItems.length === 0}
+          >
+            Procedi al Checkout
+          </Button>
+          </Typography>
+          </CardContent>
+            </Card>
+        </Col>
+      </Row>
     </Container>
   );
 }
