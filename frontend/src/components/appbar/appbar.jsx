@@ -38,7 +38,7 @@ const Aside = props => {
 	};
 
 	return (
-		<AppBar id="appbar" position="fixed">
+		<AppBar id="appbar" position="fixed" className="mb-5">
 			<Row>	
 				<Col md={3}>
 				</Col>

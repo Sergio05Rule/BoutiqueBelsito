@@ -26,7 +26,7 @@ export default function HomeScreen() {
       } catch (err) {
         setError(err.message);
         setLoading(false);
-      }
+      } 
     };
     fetchData(); //call the function
   }, []);
@@ -44,11 +44,13 @@ export default function HomeScreen() {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <div className="row center">
+          <>
             {products.map((product) => (
+              <Col md={4} sm={12}>
               <Product key={product._id} product={product}></Product>
+              </Col>
             ))}          
-          </div>
+          </>
         )}
       </Row>
       <CookieConsent

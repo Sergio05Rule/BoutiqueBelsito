@@ -126,6 +126,24 @@ button.small {
 }
 /* FINE PrivacyScreen.js */
 
+/* Checkout Steps */
+.checkout-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: #f08000;
+  color: #f08000;
+}
+
+#ship_info{
+  display: flex;
+  justify-content: center;
+}
+
 body {
   /*
   margin: 0;
@@ -151,6 +169,8 @@ body {
   height: 100%;
   */
 }
+
+/*
 header {
   grid-area: header;
   background-color: #203040;
@@ -159,7 +179,7 @@ main {
   grid-area: main;
   padding: 1rem;
 }
-
+*/
 /* Common */
 h1 {
   font-size: 1.8rem;
@@ -169,6 +189,7 @@ h2 {
   font-size: 1.6rem;
   padding: 1rem 0;
 }
+
 /*
 a {
   text-decoration: none!important;

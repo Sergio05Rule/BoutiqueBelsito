@@ -5,16 +5,14 @@ import {
 } from "@material-ui/core";
 import { IconContext } from "react-icons";
 import { FiFacebook, FiInstagram } from "react-icons/fi";
-import { Row, Col, Image } from "react-bootstrap/";
+import { Row, Col, Image ,Container} from "react-bootstrap/";
 import { Link } from "react-router-dom";
 import "./footer.css";
-
-
 
 const Aside = (props) => {
 
   return (
-<footer className="bottom">
+<footer className="bottom w-100">
 <Row className="contacts">
         <Col md={4} >
           <Col className="col_text" md={12}>CHI SIAMO</Col>

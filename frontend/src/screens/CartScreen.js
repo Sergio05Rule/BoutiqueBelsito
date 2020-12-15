@@ -135,58 +135,61 @@ export default function CartScreen(props) {
                         ></img>
                       </Col>
                       <Col md={2}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          <Link to={`/product/${item.product}`}>
+                            {item.name}
+                          </Link>
                         </Typography>
                       </Col>
                       <Col md={2}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Taglia: {item.size}</Typography>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Taglia: {item.size}
+                        </Typography>
                       </Col>
                       <Col md={2}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        <CssFormControl_buy size="small" variant="outlined">
-                          <InputLabel>Quantità</InputLabel>
-                          <Select
-                            native
-                            value={item.qty}
-                            onChange={(e) =>
-                              dispatch(
-                                addToCart(
-                                  item.product,
-                                  Number(e.target.value),
-                                  item.size
+                        <Typography gutterBottom variant="h5" component="h2">
+                          <CssFormControl_buy size="small" variant="outlined">
+                            <InputLabel>Quantità</InputLabel>
+                            <Select
+                              native
+                              value={item.qty}
+                              onChange={(e) =>
+                                dispatch(
+                                  addToCart(
+                                    item.product,
+                                    Number(e.target.value),
+                                    item.size
+                                  )
                                 )
-                              )
-                            }
-                            inputProps={{
-                              name: "Default",
-                              id: "outlined-age-native-simple",
-                            }}
-                          >
-                            {populateSelectQty(
-                              item.sizeStockCount[0],
-                              item.size
-                            )}
-                          </Select>
-                        </CssFormControl_buy>
+                              }
+                              inputProps={{
+                                name: "Default",
+                                id: "outlined-age-native-simple",
+                              }}
+                            >
+                              {populateSelectQty(
+                                item.sizeStockCount[0],
+                                item.size
+                              )}
+                            </Select>
+                          </CssFormControl_buy>
                         </Typography>
                       </Col>
                       <Col md={2}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {item.price}€</Typography>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {item.price}€
+                        </Typography>
                       </Col>
                       <Col md={2}>
-                    <Typography gutterBottom variant="h5" component="h2">
-
-                        <Button
-                          type="button"
-                          color="secondary"
-                          variant="contained"
-                          onClick={() => removeFromCartHandler(item.product)}
-                        >
-                          Rimuovi
-                        </Button>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          <Button
+                            type="button"
+                            color="secondary"
+                            variant="contained"
+                            onClick={() => removeFromCartHandler(item.product)}
+                          >
+                            Rimuovi
+                          </Button>
                         </Typography>
                       </Col>
                     </Row>
@@ -197,25 +200,28 @@ export default function CartScreen(props) {
           </Card>
         </Col>
         <Col md={3}>
-            <Card>
-                <CardContent>
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Subtotale ({cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
+                oggetto/i): {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                €
+              </Typography>
+              <div className="text-center">
                 <Typography gutterBottom variant="h5" component="h2">
-            Subtotale ({cartItems.reduce((a, c) => a + c.qty, 0)} oggetto/i) :
-            {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}€
-          </Typography>
-          <Typography gutterBottom variant="h5" component="h2">
-          <Button
-            type="button"
-            onClick={checkoutHandler}
-            color="primary"
-                          variant="contained"
-            disabled={cartItems.length === 0}
-          >
-            Procedi al Checkout
-          </Button>
-          </Typography>
-          </CardContent>
-            </Card>
+                  <Button
+                    type="button"
+                    onClick={checkoutHandler}
+                    color="primary"
+                    variant="contained"
+                    disabled={cartItems.length === 0}
+                  >
+                    Procedi al Checkout
+                  </Button>
+                </Typography>
+              </div>
+            </CardContent>
+          </Card>
         </Col>
       </Row>
     </Container>

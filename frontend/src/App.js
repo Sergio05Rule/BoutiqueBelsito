@@ -29,14 +29,13 @@ import './components/appbar/appbar.css';
 import './components/appbar/drawerBasic/drawerBasic.css';
 import './components/appbar/SearchBox.css';
 import './App.css'
-import {Row,Col} from "react-bootstrap";
 import BiographyScreen from './screens/BiographyScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import PaymentInfoScreen from './screens/PaymentInfoScreen';
 import ShippmentInfoScreen from './screens/ShippmentInfoScreen';
 import PrivacyScreen from './screens/PrivacyScreen';
 import CookieScreen from './screens/CookieScreen';
-
+import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
 
 
 function App() {
@@ -65,7 +64,7 @@ function App() {
       <React.Fragment>
         <BrowserRouter>
             <AppBar></AppBar>
-            <body id="appJsBody">
+            <Container id="appJsBody">
                 <Route path="/cart/:id?" component={CartScreen}></Route>
                 <Route path="/product/:id" component={ProductScreen} exact></Route>
                 <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
@@ -93,7 +92,7 @@ function App() {
                 <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
                 <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
                 <Route path="/" component={HomeScreen} exact></Route>
-            </body>
+                </Container>
             <Footer></Footer>
         </BrowserRouter>
         </React.Fragment>

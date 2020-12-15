@@ -354,7 +354,7 @@ Taglia                              </option>
                               className="primary block"
                               size="large"
                             >
-                            <label id="cart_label">Aggiungi al carrello</label><AiOutlineShoppingCart id="cart_icon"></AiOutlineShoppingCart>
+                            <AiOutlineShoppingCart id="cart_icon"></AiOutlineShoppingCart>
                           </Button>
                           </Col>
                         )}
@@ -367,11 +367,12 @@ Taglia                              </option>
                       </Col>
 
                     )}
-
+                  <div className="mt-3">
                   <Rating
                     rating={product.rating}
                     numReviews={product.numReviews}
                   ></Rating>
+                  </div>
                 </CardContent>
               </Card>
             </Col>
