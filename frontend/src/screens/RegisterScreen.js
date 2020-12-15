@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { register } from '../actions/userActions';
-import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { register } from "../actions/userActions";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Form from "react-bootstrap/Form";
+import Card from "@material-ui/core/Card";
+import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import CardContent from "@material-ui/core/CardContent";
 
 export default function RegisterScreen(props) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const redirect = props.location.search
-    ? props.location.search.split('=')[1]
-    : '/';
+    ? props.location.search.split("=")[1]
+    : "/";
 
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
@@ -22,13 +28,11 @@ export default function RegisterScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert('Password e Conferma Password non corrispondono');
+      alert("Password e Conferma Password non corrispondono");
     } else {
-      if (password.length <6 )
-      {
-      alert('La Password deve essere lunga almeno 6 caratteri');
-      }
-      else{
+      if (password.length < 6) {
+        alert("La Password deve essere lunga almeno 6 caratteri");
+      } else {
         dispatch(register(name, email, password));
       }
     }
@@ -39,67 +43,79 @@ export default function RegisterScreen(props) {
     }
   }, [props.history, redirect, userInfo]);
   return (
-    <div>
-      <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Crea Account</h1>
-        </div>
-        {loading && <LoadingBox></LoadingBox>}
-        {error && <MessageBox variant="danger">{error}</MessageBox>}
-        <div>
-          <label htmlFor="name">Nome utente</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Inserisci nome utente"
-            required
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="email">Indirizzo email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Inserisci email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Inserisci password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="confirmPassword">Conferma Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Inserisci conferma password"
-            required
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label />
-          <button className="primary" type="submit">
-            Registrati
-          </button>
-        </div>
-        <div>
-          <label />
-          <div>
-            Hai già un account?{' '}
-            <Link to={`/signin?redirect=${redirect}`}>Accedi</Link>
-          </div>
-        </div>
-      </form>
-    </div>
+    <Container>
+      <Row>
+        <Col md={3}></Col>
+
+        <Col md={6}>
+          <Card>
+            <CardContent>
+              <Form className="form" onSubmit={submitHandler}>
+                <Typography variant="h5" component="h2">
+                  <h1>Crea Account</h1>
+                </Typography>
+                {loading && <LoadingBox></LoadingBox>}
+                {error && <MessageBox variant="danger">{error}</MessageBox>}
+                <Typography variant="h5" component="h2">
+                  <Form.Label htmlFor="name">Nome utente</Form.Label>
+                  <Form.Control
+                    type="text"
+                    id="name"
+                    placeholder="Inserisci nome utente"
+                    required
+                    onChange={(e) => setName(e.target.value)}
+                  ></Form.Control>
+                </Typography>
+
+                <Typography variant="h5" component="h2">
+                  <Form.Label htmlFor="email">Indirizzo email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    id="email"
+                    placeholder="Inserisci email"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                  ></Form.Control>
+                  </Typography>
+
+                  <Typography variant="h5" component="h2">
+                  <Form.Label htmlFor="password">Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    id="password"
+                    placeholder="Inserisci password"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                  ></Form.Control>
+                  </Typography>
+
+                  <Typography variant="h5" component="h2">
+                  <Form.Label htmlFor="confirmPassword">Conferma Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Inserisci conferma password"
+                    required
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  ></Form.Control>
+                  </Typography>
+
+                  <Typography variant="h5" component="h2">
+                  <Button color="primary" className="w-100" variant="contained"  type="submit">
+                    Registrati
+                  </Button>
+                  </Typography>
+
+                  <Typography variant="h5" component="h2">
+                    Hai già un account?{" "}
+                    <Link to={`/signin?redirect=${redirect}`}>Accedi</Link>
+                    </Typography>
+              </Form>
+            </CardContent>
+          </Card>
+        </Col>
+        <Col md={3}></Col>
+      </Row>
+    </Container>
   );
 }

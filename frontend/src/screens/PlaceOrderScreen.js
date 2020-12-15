@@ -54,7 +54,7 @@ export default function PlaceOrderScreen(props) {
                 <strong>Nome:</strong> {cart.shippingAddress.fullName}
               </Typography>
               <Typography variant="h5" component="h2">
-                <strong>Indirizzo: </strong> {cart.shippingAddress.address}
+                <strong>Indirizzo: </strong> {cart.shippingAddress.address},{""}
                 {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},
                 {cart.shippingAddress.country}
               </Typography>

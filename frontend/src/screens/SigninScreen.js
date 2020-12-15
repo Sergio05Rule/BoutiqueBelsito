@@ -4,6 +4,13 @@ import { Link } from 'react-router-dom';
 import { signin } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Form from "react-bootstrap/Form";
+import Card from "@material-ui/core/Card";
+import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import CardContent from "@material-ui/core/CardContent";
+
 
 export default function SigninScreen(props) {
 
@@ -29,55 +36,70 @@ export default function SigninScreen(props) {
       }
   },[props.history, redirect, userInfo]);
   return (
-    <div>
-      <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Accedi</h1>
-        </div>
+    <Container>
+      <Row>
+      <Col md={3}></Col>
+
+      <Col md={6}>
+      <Card><CardContent>
+      <Typography variant="h5" component="h2">
+      <h1>Accedi</h1>
+      </Typography>
+
+      <Form className="form" onSubmit={submitHandler}>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
-        <div>
-          <label htmlFor="email">Indirizzo email</label>
-          <input
+        
+        <Typography variant="h5" component="h2">
+          <Form.Label htmlFor="email">Indirizzo email</Form.Label>
+          <Form.Control
             type="email"
             id="email"
             placeholder="Inserisci email di accesso"
             required
             onChange={(e) => setEmail(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
+          ></Form.Control>
+          </Typography>
+
+
+          <Typography variant="h5" component="h2">
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Control
             type="password"
             id="password"
             placeholder="Inserisci password"
             required
             onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label />
-          <button className="primary" type="submit">
+          ></Form.Control>
+          </Typography>
+
+          <Typography variant="h5" component="h2">
+
+          <Button color="primary" className="w-100" variant="contained"  type="submit">
             Accedi
-          </button>
-        </div>
-        <div>
-          <label />
-          <div>
+          </Button>
+          </Typography>
+
+          <Typography variant="h5" component="h2">
           Nuovo cliente?{' '}
             <Link to={`/register?redirect=${redirect}`}>
               Crea un nuovo account in un semplice step!
             </Link>
-          </div>
-          <div>
+            </Typography>
+
+            <Typography variant="h5" component="h2">
           Password di accesso dimenticata?{' '}
             <Link to={`/forgotpassword?redirect=${redirect}`}>
               Clicca qui!
             </Link>
-          </div>
-        </div>
-      </form>
-    </div>
+            </Typography>
+
+
+      </Form>
+      </CardContent></Card>
+      </Col>
+      <Col md={3}></Col>
+      </Row>
+    </Container>
   );
 }
