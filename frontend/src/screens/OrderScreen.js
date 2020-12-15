@@ -216,7 +216,7 @@ export default function OrderScreen(props) {
                 className="w-100"
                     onClick={deliverHandler}
                   >
-                    Spegna come spedito
+                    Segna come spedito
                   </Button>
                 </>
               )}
