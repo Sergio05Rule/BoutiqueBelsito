@@ -3,6 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listOrderMine } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import Button from "@material-ui/core/Button";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Select from "@material-ui/core/Select";
+import NativeSelect from "@material-ui/core/NativeSelect";
+import InputLabel from "@material-ui/core/InputLabel";
+import CardContent from "@material-ui/core/CardContent";
+import Card from "@material-ui/core/Card";
+import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
 
 export default function OrderHistoryScreen(props) {
   const orderMineList = useSelector((state) => state.orderMineList);
@@ -12,8 +20,14 @@ export default function OrderHistoryScreen(props) {
     dispatch(listOrderMine());
   }, [dispatch]);
   return (
-    <div>
-      <h1>Storico degli ordini:</h1>
+    <Container>
+      <Row>
+        <Col md={12}><h2>Storico degli ordini:</h2>
+        </Col></Row>
+      <Row>
+        <Col md={12}>
+        <Card>
+            <CardContent>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -22,12 +36,12 @@ export default function OrderHistoryScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>Numero Ordine</th>
-              <th>Data</th>
-              <th>Totale</th>
-              <th>Pagato</th>
-              <th>Spedito</th>
-              <th>Azioni</th>
+              <th><h2>Numero Ordine</h2></th>
+              <th><h2>Data</h2></th>
+              <th><h2>Totale</h2></th>
+              <th><h2>Pagato</h2></th>
+              <th><h2>Spedito</h2></th>
+              <th><h2>Azioni</h2></th>
             </tr>
           </thead>
           <tbody>
@@ -43,7 +57,9 @@ export default function OrderHistoryScreen(props) {
                     : 'No'}
                 </td>
                 <td>
-                  <button
+                  <Button
+                  color="primary"
+                  variant="contained"
                     type="button"
                     className="small"
                     onClick={() => {
@@ -51,13 +67,17 @@ export default function OrderHistoryScreen(props) {
                     }}
                   >
                     Dettagli
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
-    </div>
+      </CardContent>
+      </Card>
+      </Col>
+      </Row>
+    </Container>
   );
 }

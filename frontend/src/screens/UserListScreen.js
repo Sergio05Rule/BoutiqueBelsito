@@ -4,6 +4,10 @@ import { deleteUser, listUsers } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { USER_DETAILS_RESET } from '../constants/userConstants';
+import CardContent from "@material-ui/core/CardContent";
+import Card from "@material-ui/core/Card";
+import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import Button from "@material-ui/core/Button";
 
 export default function UserListScreen(props) {
     const userList = useSelector((state) => state.userList);
@@ -29,8 +33,14 @@ export default function UserListScreen(props) {
     }
   };
   return (
-    <div>
-      <h1>Users</h1>
+    <Container>
+      <Row>
+        <Col md={12}>
+      <h1>Pannello di amministrazione utenti:</h1>
+      </Col>
+      </Row>
+
+      <Row> <Col md={12}><Card><CardContent>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {successDelete && (
@@ -61,26 +71,33 @@ export default function UserListScreen(props) {
                 <td>{user.isSeller ? 'SI' : ' NO'}</td>
                 <td>{user.isAdmin ? 'SI' : 'NO'}</td>
                 <td>
-                <button
+                <Button
+                color="primary"
+                variant="contained"
                     type="button"
                     className="small"
                     onClick={() => props.history.push(`/user/${user._id}/edit`)}
                   >
                     Modifica
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                  color="primary"
+                  variant="contained"
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(user)}
                   >
                     Cancella
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
-    </div>
+      </CardContent></Card>
+        </Col>
+        </Row> 
+    </Container>
   );
 }

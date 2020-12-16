@@ -4,6 +4,10 @@ import { deleteOrder, listOrders } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { ORDER_DELETE_RESET } from '../constants/orderConstants';
+import CardContent from "@material-ui/core/CardContent";
+import Card from "@material-ui/core/Card";
+import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import Button from "@material-ui/core/Button";
 
 export default function OrderListScreen(props) {
   const orderList = useSelector((state) => state.orderList);
@@ -25,8 +29,15 @@ const deleteHandler = (order) => {
       }
     };
   return (
-    <div>
-      <h1>Ordini pannello di amministrazione</h1>
+    <Container>
+       <Row>
+        <Col md={12}>
+      <h1>Pannello di amministrazione ordini:</h1>
+      </Col>
+      </Row>
+
+      <Row> <Col md={12}><Card><CardContent>
+
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {successDelete && (
@@ -63,28 +74,35 @@ const deleteHandler = (order) => {
                     : 'No'}
                 </td>
                 <td>
-                  <button
+                  <Button
                     type="button"
+                    color="primary"
+                    variant="contained"
                     className="small"
                     onClick={() => {
                       props.history.push(`/order/${order._id}`);
                     }}
                   >
                     Dettagli
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                  color="primary"
+                  variant="contained"
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(order)}
                   >
                     Cancella
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
-    </div>
+      </CardContent></Card>
+        </Col>
+        </Row> 
+    </Container>
   );
 }

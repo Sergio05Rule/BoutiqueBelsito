@@ -10,6 +10,10 @@ import {
     PRODUCT_CREATE_RESET,
     PRODUCT_DELETE_RESET,
   } from '../constants/productConstants';
+import CardContent from "@material-ui/core/CardContent";
+import Card from "@material-ui/core/Card";
+import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import Button from "@material-ui/core/Button";
 
 export default function ProductListScreen(props) {
   const sellerMode = props.match.path.indexOf('/seller') >= 0; //Add
@@ -65,13 +69,21 @@ export default function ProductListScreen(props) {
     dispatch(createProduct());
   };
   return (
-    <div>
-        <div className="row">
-            <h1>Pannello di amministrazione prodotti</h1>
-            <button type="button" className="primary" onClick={createHandler}>
+    <Container>
+        <Row>
+        <Col md={9}>
+            <h2>Pannello di amministrazione prodotti:</h2>
+            </Col>
+            <Col md={3}>
+            <Button type="button"   color="primary"
+                  variant="contained"
+                  onClick={createHandler}>
             Crea prodotto
-            </button>
-        </div>
+            </Button>
+            </Col>
+        </Row>
+
+        <Row> <Col md={12}><Card><CardContent>
 
         {loadingDelete && <LoadingBox></LoadingBox>}
         {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
@@ -107,7 +119,9 @@ export default function ProductListScreen(props) {
                     <td>{product.category}</td>
                     <td>{product.brand}</td>
                     <td>
-                    <button
+                    <Button
+                       color="primary"
+                       variant="contained"
                         type="button"
                         className="small"
                         onClick={() =>
@@ -115,20 +129,25 @@ export default function ProductListScreen(props) {
                         }
                     >
                         Modifica
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                    color="primary"
+                    variant="contained"
                         type="button"
                         className="small"
                         onClick={() => deleteHandler(product)}
                     >
                         Cancella
-                    </button>
+                    </Button>
                     </td>
                 </tr>
                 ))}
             </tbody>
             </table>
-        )}    
-    </div>
+        )}   
+        </CardContent></Card>
+        </Col>
+        </Row> 
+    </Container>
     );
     }
