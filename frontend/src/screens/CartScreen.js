@@ -118,11 +118,12 @@ export default function CartScreen(props) {
           <Card>
             <CardContent>
               {cartItems.length === 0 ? (
-                <Row>
-                  <MessageBox>
-                    Il carello è vuoto.<Link to="/">Go Shopping!</Link>
+                        <Typography gutterBottom variant="h5" component="h2">
+
+                  <MessageBox className="w-100">
+                    Il carello è vuoto. <Link to="/">Go Shopping!</Link>
                   </MessageBox>
-                </Row>
+                  </Typography>
               ) : (
                 <>
                   {cartItems.map((item) => (

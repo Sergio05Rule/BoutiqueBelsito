@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   /*box-sizing: border-box;*/
@@ -144,6 +146,13 @@ button.small {
   justify-content: center;
 }
 
+/* BiographyScreen */
+#biography{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  align-self: center;
+}
 body {
   /*
   margin: 0;
@@ -463,6 +472,16 @@ img.large {
   font-size: 1.4rem;
   line-height: 2rem;
 }
+
+@font-face{
+font-family: biographyFont;
+src: url(./AdineKirnberg.ttf);
+font-size: 3rem;
+}
+@font-face{
+	font-family: brandFont;
+	src: url(./BilboSwashCaps-Regular.ttf);
+  }
 
 .contacts {
   font-size: 0.8rem;
