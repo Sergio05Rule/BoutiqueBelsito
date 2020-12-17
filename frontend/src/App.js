@@ -36,6 +36,7 @@ import ShippmentInfoScreen from './screens/ShippmentInfoScreen';
 import PrivacyScreen from './screens/PrivacyScreen';
 import CookieScreen from './screens/CookieScreen';
 import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import ScrollToTop from './ScrollToTop'
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
   return (
       <React.Fragment>
         <BrowserRouter>
+        <ScrollToTop />
             <AppBar></AppBar>
             <Container id="appJsBody">
                 <Route path="/cart/:id?" component={CartScreen}></Route>
