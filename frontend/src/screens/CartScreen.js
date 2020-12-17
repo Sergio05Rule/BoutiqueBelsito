@@ -200,7 +200,7 @@ export default function CartScreen(props) {
             </CardContent>
           </Card>
         </Col>
-        <Col md={3}>
+        <Col md={3} className="mt-3">
           <Card>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">

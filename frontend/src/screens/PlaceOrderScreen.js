@@ -100,7 +100,7 @@ export default function PlaceOrderScreen(props) {
           </Card>
         </Col>
 
-        <Col md={3}>
+        <Col md={3} className="mt-3">
           <Card>
             <CardContent>
               <Typography variant="h2" component="h2">

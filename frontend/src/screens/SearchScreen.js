@@ -54,9 +54,6 @@ export default function SearchScreen(props) {
     const sortOrder = filter.order || order;
     const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
     const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
-    console.log(filter);
-    console.log("filterRating");
-
     return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}`;
   };
   return (
@@ -165,7 +162,7 @@ export default function SearchScreen(props) {
         </Col>
 
 
-        <Col md={6}>
+        <Col md={6} className="mt-3">
             <Card>
           <CardContent>
               {loading ? (

@@ -40,17 +40,19 @@ const Aside = props => {
 	return (
 		<AppBar id="appbar" position="fixed" className="mb-5">
 			<Row>	
-				<Col md={3}>
+				<Col md={3} xs={1}>
 				</Col>
-				<Col md={6}>
-					<Row className="justify-content-start">
-					<Col md={3} >
+
+				<Col md={3} xs={3}>
+					<div className="justify-content-start">
 					<div className="mt-3">
 					<Link className="brand" to="/">Boutique Belsito</Link>
 					</div>
-					</Col>
-					
-					<Col md={9}>
+					</div>
+				</Col>
+
+				<Col md={3} xs={4}>
+				<div className="justify-content-start">
 					<div className="mt-1">
 					<Route
 					render={({ history }) => (
@@ -58,12 +60,11 @@ const Aside = props => {
 					)}
 					></Route>
 					</div>
-					</Col>
-					</Row>
+					</div>
 				</Col>
 
-				<Col className="navigation" md={3}>
-					<Row>
+
+				<Col className="navigation" md={3} xs={4}>
 						<Toolbar>
 						<Link className="cart" to="/cart" >
 							<Badge badgeContent={cartItems.length} color="secondary"  id="badge">
@@ -83,7 +84,6 @@ const Aside = props => {
 						openSidebar={openSidebar}
 						onCloseDrawer={handleDrawerClose}
 						/>
-					</Row>
 				</Col>
 			</Row>
 		</AppBar>

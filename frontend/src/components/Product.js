@@ -10,16 +10,35 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useTheme } from "@material-ui/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    maxWidth: 345,
+    [theme.breakpoints.down("md")] : {
+    maxWidth: 200
+    },
+    [theme.breakpoints.down("xs")] : {
+      maxWidth: 300
+      }
+  },
+  media: {
+    height: 140
+  }
+}));
 
 export default function Product(props) {
+  const classes = useStyles();
+  const theme = useTheme();
+
+
   const { product } = props;
 
   
 
   return (
-    <Col md={4}>
-    <Card  key={product.id} id="product_card">
+    <Card className={classes.root} key={product.id} id="product_card">
       <CardActionArea className="card"  to={`/product/${product._id}`} component={Link}>
         <CardMedia
           component="img"
@@ -44,6 +63,5 @@ export default function Product(props) {
       </CardActionArea>
     
     </Card>
-    </Col>
   );
 }

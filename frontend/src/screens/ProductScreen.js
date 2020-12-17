@@ -281,7 +281,7 @@ export default function ProductScreen(props) {
                 ></img>
               </div>
             </Col>
-            <Col md={6}>
+            <Col md={6} className="mt-3">
               <Card>
                 <CardContent>
                   <Typography variant="h2" component="h2">
@@ -317,7 +317,7 @@ export default function ProductScreen(props) {
                           <span className="success">Stato :In Stock</span>
                           </Col>
                         </Col>
-                        <Col md={3}>
+                        <Col md={3} className="mt-3">
                           <CssFormControl_buy
                             variant="outlined"
                           >
@@ -340,7 +340,7 @@ Taglia                              </option>
                         </Col>
 
                         {size !== "Default" && (
-                          <Col md={3}>
+                          <Col md={3} className="mt-3">
                             <CssFormControl_buy
                             variant="outlined"
                           >
@@ -369,7 +369,7 @@ Taglia                              </option>
                         )}
 
                         {size !== "Default" && qty > 0 && (
-                          <Col md={3}>
+                          <Col md={3} className="mt-3">
                             <Button
                               onClick={addToCartHandler}
                               className="primary block"

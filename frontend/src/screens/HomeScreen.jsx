@@ -7,7 +7,7 @@ import SlideShow from "../components/SlideShow.jsx";
 
 import CookieConsent from "react-cookie-consent";
 import { Link } from "react-router-dom";
-import { Row, Col, Dropdown, Container } from "react-bootstrap/";
+import { Row, Col, Dropdown, Container, Grid } from "react-bootstrap/";
 
 export default function HomeScreen() {
   const [products, setProducts] = useState([]); //React hook to manage state of react component
@@ -33,12 +33,11 @@ export default function HomeScreen() {
 
   //Render section of the components
   return (
-    <React.Fragment>
-      <Container>
+      <Container fluid>
         <hr></hr>
         <SlideShow></SlideShow>
         <hr></hr>
-      <Row>
+      <Row className="justify-content-md-center">
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -46,7 +45,7 @@ export default function HomeScreen() {
         ) : (
           <>
             {products.map((product) => (
-              <Col md={4} sm={12}>
+              <Col md={4} xs={12}>
               <Product key={product._id} product={product}></Product>
               </Col>
             ))}          
@@ -65,6 +64,5 @@ export default function HomeScreen() {
         <Link to="/CookieScreen">Cookie Policy</Link>
       </CookieConsent>
       </Container>
-    </React.Fragment>
   );
 }

@@ -112,7 +112,6 @@ export default function ProductEditScreen(props) {
           set60(size._60)
         )
       );
-      //setS(product.sizeStockCount.S);
       setBrand(product.brand);
       setDescription(product.description);
     }

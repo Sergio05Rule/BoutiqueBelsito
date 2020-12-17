@@ -11,6 +11,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
 import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import Table from 'react-bootstrap/Table'
 
 export default function OrderHistoryScreen(props) {
   const orderMineList = useSelector((state) => state.orderMineList);
@@ -26,14 +27,14 @@ export default function OrderHistoryScreen(props) {
         </Col></Row>
       <Row>
         <Col md={12}>
-        <Card>
+          <Card>
             <CardContent>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <Table responsive className="table">
           <thead>
             <tr>
               <th><h2>Numero Ordine</h2></th>
@@ -72,7 +73,7 @@ export default function OrderHistoryScreen(props) {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
       </CardContent>
       </Card>
