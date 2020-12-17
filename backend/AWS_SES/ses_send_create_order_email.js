@@ -41,7 +41,7 @@ for (var i = 0; i < userOrder.orderItems.length ; i++)
   emaildata = emaildata + "<td> <a href=\"localhost:3000/product/"+userOrder.orderItems[i].product+"/\"  target=\"_blank\"><img width=\"50\" src=\"http://boutiquebelsito.com/"+userOrder.orderItems[i].image+"\" \/> <\/a> <\/td>";
 
   // append size
-  emaildata = emaildata + "<td> <p> Size: " + userOrder.orderItems[i].size + "<\/p> <\/td>";
+  emaildata = emaildata + "<td> <p> Size: " + userOrder.orderItems[i].size.replace('_','') + "<\/p> <\/td>";
   
   const item_dot_qty =  userOrder.orderItems[i].price* userOrder.orderItems[i].qty
   emaildata = emaildata + "<td> <p>" + userOrder.orderItems[i].qty + " x "+ userOrder.orderItems[i].price + "€ = "+ item_dot_qty + "€<\/p> <\/td>";
@@ -64,7 +64,7 @@ var params = {
   Destination: { /* required */
     CcAddresses: [
       //'EMAIL_ADDRESS',
-      /* more items */
+      "boutiquebelsitoshop@gmail.com",
     ],
     ToAddresses: [
         emailReciver,

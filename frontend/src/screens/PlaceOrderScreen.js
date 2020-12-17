@@ -89,7 +89,7 @@ export default function PlaceOrderScreen(props) {
                 </Col>
 
                 <Col md={3}>
-                Taglia: {item.size}
+                Taglia: {item.size.replace('_','')}
                 </Col>
                 <Col md={3}>
                   {item.qty} x {item.price}€ = {item.qty * item.price}€

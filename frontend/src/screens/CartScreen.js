@@ -144,7 +144,7 @@ export default function CartScreen(props) {
                       </Col>
                       <Col md={2}>
                         <Typography gutterBottom variant="h5" component="h2">
-                          Taglia: {item.size}
+                          Taglia: {item.size.replace('_','')}
                         </Typography>
                       </Col>
                       <Col md={2}>

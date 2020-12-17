@@ -171,7 +171,29 @@ export default function ProductScreen(props) {
         prop === "L" ||
         prop === "XL" ||
         prop === "XXL" ||
-        prop === "XXXL"
+        prop === "XXXL" ||
+        prop === "_40" ||
+        prop === "_41" ||
+        prop === "_42" ||
+        prop === "_43" ||
+        prop === "_44" ||
+        prop === "_45" ||
+        prop === "_46" ||
+        prop === "_47" ||
+        prop === "_48" ||
+        prop === "_49" ||
+        prop === "_50" ||
+        prop === "_51" ||
+        prop === "_52" ||
+        prop === "_53" ||
+        prop === "_54" ||
+        prop === "_55" ||
+        prop === "_56" ||
+        prop === "_57" ||
+        prop === "_58" ||
+        prop === "_59" ||
+        prop === "_60" 
+
       ) {
         // check if the oredered qty > stock_qty
         if (obj[prop] > 0) {
@@ -188,7 +210,7 @@ export default function ProductScreen(props) {
     for (var i = 0; i < sizeInStock.length; i++) {
       options.push(
         <option key={sizeInStock[i]} value={sizeInStock[i]}>
-          {sizeInStock[i]}
+          {sizeInStock[i].replace('_','')}
         </option>
       );
     }
