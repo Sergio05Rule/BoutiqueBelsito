@@ -7,7 +7,7 @@ import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 import Axios from "axios";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
-import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
+import { Row, Col, Container } from "react-bootstrap/";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Form from "react-bootstrap/Form";
@@ -20,9 +20,6 @@ export default function ProductEditScreen(props) {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
-
-  const [sizeStockCount, setSizeStockCount] = useState("");
-
   const [S, setS] = useState("");
   const [M, setM] = useState("");
   const [L, setL] = useState("");
@@ -173,7 +170,7 @@ export default function ProductEditScreen(props) {
     bodyFormData.append("image", file);
     setLoadingUpload(true);
     try {
-      const { data } = await Axios.post("/api/uploads", bodyFormData, {
+      const { data } = await Axios.post("/api/uploads/s3", bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${userInfo.token}`,
@@ -243,18 +240,16 @@ export default function ProductEditScreen(props) {
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
                     ></Form.Control>
-                    {/*
-            <div>
-              <label htmlFor="image">Directory immagine:</label>
-              <input
+                    
+              <Form.Label htmlFor="image">Directory immagine:</Form.Label>
+              <Form.Control
                 id="image"
                 type="text"
                 placeholder="Enter image"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-              ></input>
-            </div>
-            */}
+              ></Form.Control>
+            
                     <Form.Label className="mt-3" htmlFor="imageFile">
                       Carica immagine via File:
                     </Form.Label>
