@@ -1,5 +1,5 @@
 import multer from 'multer';
-import express, { Router } from 'express';
+import express from 'express';
 import { isAuth } from '../utils.js';
 import multerS3 from 'multer-s3';
 import aws from 'aws-sdk';
