@@ -27,8 +27,8 @@ uploadRouter.post('/', isAuth, upload.single('image'), (req, res) => {
 });
 
 aws.config.update({
-  accessKeyId: dotenv.config.accessKeyId,
-  secretAccessKey: dotenv.config.secretAccessKey,
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey,
 });
 
 const s3 = new aws.S3();
