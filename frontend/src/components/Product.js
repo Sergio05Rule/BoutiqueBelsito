@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 200
     },
     [theme.breakpoints.down("xs")] : {
-      maxWidth: 300
+      maxWidth: 275
       }
   },
   media: {

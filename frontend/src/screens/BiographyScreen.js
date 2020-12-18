@@ -28,7 +28,7 @@ export default function HomeScreen(props) {
     <Container>
       <Row>
         <Col md={12} >
-                <img src="../../../../uploads/bio_photo_1.jpeg">
+                <img class="img-fluid" alt="Responsive image" src="../../../../uploads/bio_photo_1.jpeg">
                 </img>
         </Col>
 
@@ -75,18 +75,18 @@ export default function HomeScreen(props) {
             </CardContent>
           </Card>
         </Col>
-        <Col md={9}>
-        <img src="../../../../uploads/bio_photo_2.jpeg">
+        <Col md={9} className="mt-2">
+        <img class="img-fluid" alt="Responsive image" src="../../../../uploads/bio_photo_2.jpeg">
                 </img>
         </Col>
       </Row>
 
       <Row className="mt-5">
       <Col md={6}>
-        <img src="../../../../uploads/bio_photo_3.jpeg">
+        <img class="img-fluid" alt="Responsive image" src="../../../../uploads/bio_photo_3.jpeg">
         </img>
         </Col>
-        <Col md={6}>
+        <Col md={6} className="mt-2">
           <Card>
             <CardContent>
               <Typography variant="h5" className={classes.root} component="h2">
@@ -100,7 +100,7 @@ export default function HomeScreen(props) {
               </Typography>
             </CardContent>
           </Card>
-                <img className="mt-3" src="../../../../uploads/bio_photo_4.jpeg">
+                <img class="img-fluid mt-3" alt="Responsive image" src="../../../../uploads/bio_photo_4.jpeg">
                 </img>
         </Col>
         

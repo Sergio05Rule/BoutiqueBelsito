@@ -162,7 +162,7 @@ export default function SearchScreen(props) {
         </Col>
 
 
-        <Col md={6} className="mt-3">
+        <Col md={9} className="mt-3">
             <Card>
           <CardContent>
               {loading ? (
@@ -179,6 +179,8 @@ export default function SearchScreen(props) {
                   {products.length} risultati
                 </Typography>
               )}
+              </CardContent>
+              </Card>
 
 {loading ? (
         <LoadingBox></LoadingBox>
@@ -196,8 +198,6 @@ export default function SearchScreen(props) {
           ))}
         </>
       )}
-            </CardContent>
-          </Card>
         </Col>
       </Row>
       

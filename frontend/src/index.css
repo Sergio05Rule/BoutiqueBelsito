@@ -149,10 +149,16 @@ button.small {
 /* BiographyScreen */
 #biography{
   font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
+  font-size: 2vw;
   text-align: center;
   align-self: center;
 }
+
+#© {
+  max-height: 100%;
+  max-width: 100%;
+}
+
 body {
   /*
   margin: 0;

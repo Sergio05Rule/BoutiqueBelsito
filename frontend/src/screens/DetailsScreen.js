@@ -20,11 +20,11 @@ export default function HomeScreen(props) {
   return (
     <Container>
       <Row>
-        <Col md={6}>
-          <img src="../../../../uploads/details_photo_1.jpeg"></img>
+        <Col md={6} xs={7}>
+          <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_1.jpeg"></img>
         </Col>
-        <Col md={1}></Col>
-        <Col md={5} id="biography">
+        <Col md={1} xs={2} ></Col>
+        <Col md={5} xs={3}>
           <h2 id="biography">
             Simplicity is the keynote of all true elegance.<br></br>
             <br></br>La semplicità è la chiave della vera eleganza.<br></br>
@@ -32,8 +32,9 @@ export default function HomeScreen(props) {
           </h2>
         </Col>
       </Row>
+
       <Row className="mt-5">
-        <Col md={5} id="biography">
+        <Col md={5} xs={3} id="biography">
           <h2 id="biography">
             There is no art where there is no style.
             <br></br>
@@ -41,19 +42,19 @@ export default function HomeScreen(props) {
             <br></br>"Oscar Wilde"
           </h2>
         </Col>
-        <Col md={1}></Col>
+        <Col md={1} xs={2}></Col>
 
-        <Col md={6}>
-          <img src="../../../../uploads/details_photo_2.jpeg"></img>
+        <Col md={6} xs={7}>
+          <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_2.jpeg"></img>
         </Col>
       </Row>
 
       <Row className="mt-5">
-        <Col md={6}>
-          <img src="../../../../uploads/details_photo_3.jpeg"></img>
+        <Col md={6} xs={7}>
+          <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_3.jpeg"></img>
         </Col>
-        <Col md={1}></Col>
-        <Col md={5} id="biography">
+        <Col md={1} xs={2}></Col>
+        <Col md={5} xs={3} id="biography">
           <h2 id="biography">
           Elegance is not being noticed, it’s about being remembered.<br></br>
             <br></br>L'eleganza non è essere notati, ma essere ricordati.<br></br>
@@ -63,7 +64,7 @@ export default function HomeScreen(props) {
       </Row>
 
       <Row className="mt-5">
-        <Col md={5} id="biography">
+        <Col md={5} xs={3} id="biography">
           <h2 id="biography">
           Semplicità ed eleganza: 
           <br></br>
@@ -71,19 +72,19 @@ export default function HomeScreen(props) {
           scegli lo stile che ti rende semplicemente unica.           
           </h2>
         </Col>
-        <Col md={1}></Col>
+        <Col md={1} xs={2}></Col>
 
-        <Col md={6}>
-          <img src="../../../../uploads/details_photo_4.jpeg"></img>
+        <Col md={6} xs={7}>
+          <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_4.jpeg"></img>
         </Col>
       </Row>
 
       <Row className="mt-5">
-        <Col md={6}>
-          <img src="../../../../uploads/details_photo_5.jpeg"></img>
+        <Col md={6} xs={7}>
+          <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_5.jpeg"></img>
         </Col>
-        <Col md={1}></Col>
-        <Col md={5} id="biography">
+        <Col md={1} xs={2}></Col>
+        <Col md={5} xs={3} id="biography">
           <h2 id="biography">
           I dettagli rendono un capo perfetto e la perfezione per noi non è un dettaglio.
           </h2>
@@ -93,7 +94,7 @@ export default function HomeScreen(props) {
 
 
       <Row className="mt-5">
-        <Col md={5} id="biography">
+        <Col md={5} xs={3} id="biography">
           <h2 id="biography">
           Tradizione eleganza e classe.
           <br></br>
@@ -102,10 +103,10 @@ export default function HomeScreen(props) {
            
           </h2>
         </Col>
-        <Col md={1}></Col>
+        <Col md={1} xs={2}></Col>
 
-        <Col md={6}>
-          <img src="../../../../uploads/details_photo_6.jpeg"></img>
+        <Col md={6} xs={7}>
+          <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_6.jpeg"></img>
         </Col>
       </Row>
 
