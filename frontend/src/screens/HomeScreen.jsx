@@ -45,7 +45,7 @@ export default function HomeScreen() {
         ) : (
           <>
             {products.map((product) => (
-              <Col md={4} xs={12}>
+              <Col md={4} xs={12} id="productslist">
               <Product key={product._id} product={product}></Product>
               </Col>
             ))}          

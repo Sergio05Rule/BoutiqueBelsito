@@ -10,6 +10,11 @@ html {
   height: 400px;
 }
 
+#productslist{
+  justify-content: center;
+  display: flex;
+}
+
 /* Product.js */
 #product_card {
   height: 280px;

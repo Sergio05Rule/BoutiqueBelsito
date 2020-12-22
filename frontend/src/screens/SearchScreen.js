@@ -162,7 +162,7 @@ export default function SearchScreen(props) {
         </Col>
 
 
-        <Col md={9} className="mt-3">
+        <Col md={9} className="mt-3" >
             <Card>
           <CardContent>
               {loading ? (
@@ -194,7 +194,9 @@ export default function SearchScreen(props) {
             </MessageBox>
           )}
           {products.map((product) => (
+              <Col md={4} xs={12} id="productslist">
             <Product key={product._id} product={product}></Product>
+            </Col>
           ))}
         </>
       )}

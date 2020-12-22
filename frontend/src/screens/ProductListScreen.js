@@ -14,6 +14,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
 import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
 import Button from "@material-ui/core/Button";
+import Table from 'react-bootstrap/Table'
 
 export default function ProductListScreen(props) {
   const sellerMode = props.match.path.indexOf('/seller') >= 0; //Add
@@ -97,7 +98,7 @@ export default function ProductListScreen(props) {
         ) : error ? (
             <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-            <table className="table">
+            <Table responsive className="table">
             <thead>
                 <tr>
                 <th>Numero prodotto:</th>
@@ -143,7 +144,7 @@ export default function ProductListScreen(props) {
                 </tr>
                 ))}
             </tbody>
-            </table>
+            </Table>
         )}   
         </CardContent></Card>
         </Col>

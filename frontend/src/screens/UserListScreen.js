@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
 import { Row, Col, Dropdown, Container, Image } from "react-bootstrap/";
 import Button from "@material-ui/core/Button";
+import Table from 'react-bootstrap/Table'
 
 export default function UserListScreen(props) {
     const userList = useSelector((state) => state.userList);
@@ -51,7 +52,7 @@ export default function UserListScreen(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <Table responsive className="table">
           <thead>
             <tr>
               <th>ID Utente:</th>
@@ -93,7 +94,7 @@ export default function UserListScreen(props) {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
       </CardContent></Card>
         </Col>
