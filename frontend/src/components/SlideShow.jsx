@@ -9,10 +9,11 @@ const SlideShow = (props) => {
     speed="1500"
     wrapAround="true"
     width="100%"
-    height="400px"
     >
-        <img src="../../../uploads/1607652007605.jpg" />
-        <img src="../../../uploads/1607652014239.jpg" />
+        <img src="../../../uploads/shop_image_1.png" />
+        <img src="../../../uploads/shop_image_2.png" />
+        <img src="../../../uploads/shop_image_3.png" />
+
       </Carousel>
   );
 };

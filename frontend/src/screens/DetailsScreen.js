@@ -23,8 +23,8 @@ export default function HomeScreen(props) {
         <Col md={6} xs={7}>
           <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_1.jpeg"></img>
         </Col>
-        <Col md={1} xs={2} ></Col>
-        <Col md={5} xs={3}>
+        <Col md={1} xs={1} ></Col>
+        <Col md={5} xs={3} className="text-center">
           <h2 id="biography">
             Simplicity is the keynote of all true elegance.<br></br>
             <br></br>La semplicità è la chiave della vera eleganza.<br></br>
@@ -42,7 +42,7 @@ export default function HomeScreen(props) {
             <br></br>"Oscar Wilde"
           </h2>
         </Col>
-        <Col md={1} xs={2}></Col>
+        <Col md={1} xs={1}></Col>
 
         <Col md={6} xs={7}>
           <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_2.jpeg"></img>
@@ -53,7 +53,7 @@ export default function HomeScreen(props) {
         <Col md={6} xs={7}>
           <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_3.jpeg"></img>
         </Col>
-        <Col md={1} xs={2}></Col>
+        <Col md={1} xs={1}></Col>
         <Col md={5} xs={3} id="biography">
           <h2 id="biography">
           Elegance is not being noticed, it’s about being remembered.<br></br>
@@ -72,7 +72,7 @@ export default function HomeScreen(props) {
           scegli lo stile che ti rende semplicemente unica.           
           </h2>
         </Col>
-        <Col md={1} xs={2}></Col>
+        <Col md={1} xs={1}></Col>
 
         <Col md={6} xs={7}>
           <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_4.jpeg"></img>
@@ -83,7 +83,7 @@ export default function HomeScreen(props) {
         <Col md={6} xs={7}>
           <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_5.jpeg"></img>
         </Col>
-        <Col md={1} xs={2}></Col>
+        <Col md={1} xs={1}></Col>
         <Col md={5} xs={3} id="biography">
           <h2 id="biography">
           I dettagli rendono un capo perfetto e la perfezione per noi non è un dettaglio.
@@ -103,7 +103,7 @@ export default function HomeScreen(props) {
            
           </h2>
         </Col>
-        <Col md={1} xs={2}></Col>
+        <Col md={1} xs={1}></Col>
 
         <Col md={6} xs={7}>
           <img class="img-fluid" alt="Responsive image" src="../../../../uploads/details_photo_6.jpeg"></img>

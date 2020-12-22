@@ -39,7 +39,7 @@ a.brand {
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 600px) {
 	a.brand{
-	  font-size: 2rem;
+	  font-size: 1.8rem;
 	}
   }
 

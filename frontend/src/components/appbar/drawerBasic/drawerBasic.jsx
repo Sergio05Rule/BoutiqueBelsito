@@ -59,7 +59,7 @@ const DrawerBasic = (props) => {
 		<ListItem button component={Link} to={`/orderhistory`}>
 		  <ListItemText className="listItem">Storico ordini</ListItemText>
 		</ListItem>
-		<ListItem button component={Link} toto="#signout" onClick={signoutHandler}>
+		<ListItem button component={Link} to="#signout" onClick={signoutHandler}>
 		  <ListItemText className="listItem">Esci</ListItemText>
 		</ListItem>
 		<br></br>
@@ -98,6 +98,16 @@ const DrawerBasic = (props) => {
 		<br></br>
         </>
       )}
+
+<h2 className="text-center">Chi Siamo</h2>
+          <Divider light={true} />
+          <ListItem button component={Link} to={`/BiographyScreen`}>
+            <ListItemText className="listItem">Biografia</ListItemText>
+          </ListItem>
+          <ListItem button component={Link} to={`/DetailsScreen`}>
+            <ListItemText className="listItem">Eleganza & Qualità</ListItemText>
+          </ListItem>
+		<br></br>
 
       <h2 className="text-center">Categorie</h2>
       <Divider light={true} />
