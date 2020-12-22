@@ -12,6 +12,7 @@ import "./footer.css";
 const Aside = (props) => {
 
   return (
+    <Container fluid>
 <footer className="bottom w-100">
 <Row className="contacts">
         <Col md={4} >
@@ -67,6 +68,7 @@ const Aside = (props) => {
         </Col>
       </Row>
     </footer>  
+    </Container>
     );
 };
 
