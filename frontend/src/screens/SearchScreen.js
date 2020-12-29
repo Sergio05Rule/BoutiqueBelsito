@@ -183,15 +183,28 @@ export default function SearchScreen(props) {
               </Card>
 
 {loading ? (
+   <Card className="mt-3">
+   <CardContent>
         <LoadingBox></LoadingBox>
+        </CardContent>
+            </Card>
       ) : error ? (
+        <Card className="mt-3">
+   <CardContent>
         <MessageBox variant="danger">{error}</MessageBox>
+        </CardContent>
+        </Card>
       ) : (
         <>
           {products.length === 0 && (
+            <Card className="mt-3">
+            <CardContent>
             <MessageBox>
               Nessun prodotto trovato con i criteri selezionati
             </MessageBox>
+            </CardContent>
+            </Card>
+
           )}
           {products.map((product) => (
               <Col md={4} xs={12} id="productslist">

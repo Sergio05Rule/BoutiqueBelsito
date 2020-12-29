@@ -34,6 +34,18 @@ export default function Product(props) {
 
 
   const { product } = props;
+  const prod_desc_lenght = (desc) => {
+    console.log(desc);
+    console.log(desc.length);
+    if (desc.length > 50)
+    {
+      return false;
+    }
+    else{
+      return true;
+    }
+
+  }
 
   
 
@@ -52,7 +64,19 @@ export default function Product(props) {
             {product.name}
           </Typography>
           <Typography variant="h8" color="textSecondary" component="p">
-            {product.description}
+            {
+              prod_desc_lenght(product.description) ? (
+                <>
+                {product.description}
+                </>
+              ) : (
+                <>
+                {product.description.substring(0, Math.min(product.description.length, 50))}...
+                </>
+              )
+              }
+            
+            
           </Typography>
           <Rating
             rating={product.rating}
