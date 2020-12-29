@@ -55,8 +55,8 @@ export default function HomeScreen() {
       <CookieConsent
         buttonText="Accetto"
         buttonStyle={{ color: "#203040" }}
-        expires={150}
-        debug={true}
+        expires={30}
+        
         style={{ background: "#203040" }}
       >
         Questo sito utilizza cookie per migliorare la tua esperienza di
