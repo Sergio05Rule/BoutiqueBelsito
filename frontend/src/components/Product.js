@@ -37,7 +37,7 @@ export default function Product(props) {
   const prod_desc_lenght = (desc) => {
     console.log(desc);
     console.log(desc.length);
-    if (desc.length > 50)
+    if (desc.length > 40)
     {
       return false;
     }
@@ -71,7 +71,7 @@ export default function Product(props) {
                 </>
               ) : (
                 <>
-                {product.description.substring(0, Math.min(product.description.length, 50))}...
+                {product.description.substring(0, Math.min(product.description.length, 40))}...
                 </>
               )
               }
