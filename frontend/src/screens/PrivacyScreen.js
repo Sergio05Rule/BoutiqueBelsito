@@ -189,7 +189,7 @@ export default function PrivacyScreen(props) {
               <br></br>Per quanto riguarda ai tempi di conservazione dei dati
               rilevati mediante l’utilizzo di strumenti di profilazione (es.
               cookies), si veda la nostra 
-              <Link to="/CookiePolicy"> Cookie Policy</Link>. <br></br>
+              <Link to="/CookieScreen"> Cookie Policy</Link>. <br></br>
               <br></br>I dati non saranno comunicati o diffusi a terzi se non
               nei limiti ed alle condizioni espressamente indicate
               nell’informativa di volta in volta fornita all’utente e previa
