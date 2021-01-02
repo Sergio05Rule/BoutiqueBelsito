@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url);
 
 const SESConfig = {
     apiVersion: "2010-12-01",
-    region: "us-east-2",
+    region: "eu-central-1",
     accessKeyId: process.env.AWS_ACCESS_ID,      
     accessSecretKey: process.env.AWS_SECRET_KEY,  
 
