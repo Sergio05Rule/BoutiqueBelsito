@@ -169,8 +169,8 @@ orderRouter.put(
       if (order) {
         order.isDelivered = true;
         order.deliveredAt = Date.now();
-        const username = req.user.name;
-        const email = req.user.email;
+        const username = order.user.name;
+        const email = order.user.email;
   
         const updatedOrder = await order.save();
         res.send({ message: 'Ordine spedito', order: updatedOrder });
