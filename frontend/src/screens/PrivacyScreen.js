@@ -83,7 +83,7 @@ export default function PrivacyScreen(props) {
               prestazione dei servizi forniti dal Sito, compresa la vendita dei
               prodotti. Responsabile della protezione dei dati, ai sensi
               dell’art. 37 del Regolamento, è contattabile all’indirizzo e-mail
-              boutiquebelsitoshop@gmail.it.
+              boutiquebelsitoshop@gmail.com.
             </AccordionDetails>
           </Accordion>
           <Accordion>
@@ -238,7 +238,7 @@ export default function PrivacyScreen(props) {
               personalizzate). <br></br>
               <br></br>Per una spiegazione dettagliata sui cookies utilizzati
               dal Sito e come disattivarli ti invitiamo a leggere la nostra{" \n"}
-              <Link to="/CookiePolicy">Cookie Policy</Link>.
+              <Link to="/CookieScreen">Cookie Policy</Link>.
               </div>
             </AccordionDetails>
           </Accordion>
