@@ -41,7 +41,7 @@ for (var i = 0; i < userOrder.orderItems.length ; i++)
 
   emaildata = emaildata + "<td> <a href=\"https://www.boutiquebelsito.it/product/"+userOrder.orderItems[i].product+"/\"  target=\"_blank\">"+userOrder.orderItems[i].name+"<\/a> <\/td>";
   
-  emaildata = emaildata + "<td> <a href=\"localhost:3000/product/"+userOrder.orderItems[i].product+"/\"  target=\"_blank\"><img width=\"50\" src=\"http://boutiquebelsito.it/"+userOrder.orderItems[i].image+"\" \/> <\/a> <\/td>";
+  emaildata = emaildata + "<td> <a href=\"localhost:3000/product/"+userOrder.orderItems[i].product+"/\"  target=\"_blank\"><img width=\"50\" src=\""+userOrder.orderItems[i].image+"\" \/> <\/a> <\/td>";
 
   // append size
   emaildata = emaildata + "<td> <p> Size: " + userOrder.orderItems[i].size.replace('_','') + "<\/p> <\/td>";
