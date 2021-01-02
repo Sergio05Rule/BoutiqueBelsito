@@ -194,10 +194,11 @@ export default function OrderScreen(props) {
                       )}
                       {loadingPay && <LoadingBox></LoadingBox>}
                       <Typography variant="h2" component="h2">
-                      <PayPalButton
+                      <PayPalButton 
                         amount={order.totalPrice}
                         options={{
-                          currency:"EUR"
+                          clientId: "############"
+                          ,currency:"EUR"
                         }}
                         onSuccess={successPaymentHandler}
                       ></PayPalButton>
