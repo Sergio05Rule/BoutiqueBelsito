@@ -193,7 +193,6 @@ export default function OrderScreen(props) {
                         <MessageBox variant="danger">{errorPay}</MessageBox>
                       )}
                       {loadingPay && <LoadingBox></LoadingBox>}
-                      <Typography variant="h2" component="h2">
                       <PayPalButton
                         amount={order.totalPrice}
                         options={{
@@ -202,7 +201,6 @@ export default function OrderScreen(props) {
                         }}
                         onSuccess={successPaymentHandler}
                       ></PayPalButton>
-                                          </Typography>
                     </>
                   )}
                 </>
