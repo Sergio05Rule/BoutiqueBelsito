@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { PayPalButton } from "no";
+import { PayPalButton } from "react-paypal-button-v2";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -194,10 +194,11 @@ export default function OrderScreen(props) {
                       )}
                       {loadingPay && <LoadingBox></LoadingBox>}
                       <Typography variant="h2" component="h2">
-                      <PayPalButton 
+                      <PayPalButton
                         amount={order.totalPrice}
                         options={{
-                          currency:"EUR"
+                          clientId: process.env.PAYPAL_CLIENT_ID
+                          ,currency:"EUR"
                         }}
                         onSuccess={successPaymentHandler}
                       ></PayPalButton>
