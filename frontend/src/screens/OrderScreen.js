@@ -196,7 +196,9 @@ export default function OrderScreen(props) {
                       <Typography variant="h2" component="h2">
                       <PayPalButton
                         amount={order.totalPrice}
-                        currency = "EUR"
+                        options={{
+                          currency:"EUR"
+                        }}
                         onSuccess={successPaymentHandler}
                       ></PayPalButton>
                                           </Typography>
